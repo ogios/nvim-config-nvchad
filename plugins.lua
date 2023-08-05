@@ -1,59 +1,83 @@
 local plugins = {
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end,
-  },
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        -- "sourcery",
-        -- "python-lsp-server",
-        "jedi-language-server",
-        "lua-language-server",
-        "prettier",
-        "stylua",
-      },
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            require "plugins.configs.lspconfig"
+            require "custom.configs.lspconfig"
+        end,
     },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        -- defaults
-        "vim",
-        "lua",
+    {
+        "williamboman/mason.nvim",
+        opts = {
+            ensure_installed = {
+                -- "sourcery",
+                -- "python-lsp-server",
+                "jedi-language-server",
+                "lua-language-server",
+                "prettier",
+                "stylua",
+            },
+        },
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        opts = {
+            ensure_installed = {
+                -- defaults
+                "vim",
+                "lua",
 
-        -- web dev
-        "html",
-        "css",
-        "javascript",
-        "typescript",
-        "tsx",
-        "json",
-        "vue",
-        -- "svelte",
+                -- web dev
+                "html",
+                "css",
+                "javascript",
+                "typescript",
+                "tsx",
+                "json",
+                "vue",
+                -- "svelte",
 
-        -- low level
-        "python",
-        "java",
-      },
+                -- low level
+                "python",
+                "java",
+            },
+        },
     },
-  },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
+    {
+        "jay-babu/mason-null-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "jose-elias-alvarez/null-ls.nvim",
+        },
+        lazy = false,
+        config = function()
+            require "custom.configs.null-ls" -- require your null-ls config here (example below)
+        end,
     },
-    lazy = false,
-    config = function()
-      require "custom.configs.null-ls" -- require your null-ls config here (example below)
-    end,
-  },
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        opts = {},
+        event = "VeryLazy",
+        -- lazy = false,
+        config = function()
+            require "custom.configs.toggleterm"
+        end,
+    },
+    {
+        "ray-x/go.nvim",
+        dependencies = { -- optional packages
+            "ray-x/guihua.lua",
+            "neovim/nvim-lspconfig",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("go").setup()
+        end,
+        event = { "CmdlineEnter" },
+        ft = { "go", "gomod" },
+        build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+    },
 }
 return plugins
