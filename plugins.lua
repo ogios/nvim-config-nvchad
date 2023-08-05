@@ -16,6 +16,8 @@ local plugins = {
                 "lua-language-server",
                 "prettier",
                 "stylua",
+                "golangci-lint-langserver",
+				"gopls"
             },
         },
     },
@@ -73,7 +75,6 @@ local plugins = {
             "nvim-treesitter/nvim-treesitter",
         },
         config = function()
-            require("go").setup()
         end,
         event = { "CmdlineEnter" },
         ft = { "go", "gomod" },
