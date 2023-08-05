@@ -11,10 +11,10 @@ keymap.set('v', "J", ":m '>+1<CR>gv=gv")
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 
-local term = require("custom.configs.toggleterm")
+-- local term = require("custom.configs.toggleterm_conf")
 
 -- lazygit
-function _lazygit_toggle()
-    term.lazygit:toggle()
-end
-vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+-- function _lazygit_toggle()
+--     term.lazygit:toggle()
+-- end
+-- vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})

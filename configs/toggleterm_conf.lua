@@ -55,7 +55,14 @@ local lazygit = Terminal:new {
 }
 Toggleterms.lazygit = lazygit
 
-return Toggleterms
+-- lazygit
+function _lazygit_toggle()
+    Toggleterms.lazygit:toggle()
+end
+vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+
+
+-- return Toggleterms
 
 -- require("toggleterm").setup {
 --     open_mapping = [[<c-\>]],

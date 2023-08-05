@@ -62,7 +62,7 @@ local plugins = {
         event = "VeryLazy",
         -- lazy = false,
         config = function()
-            require "custom.configs.toggleterm"
+            require "custom.configs.toggleterm_conf"
         end,
     },
     {
