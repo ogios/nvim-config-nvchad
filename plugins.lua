@@ -1,0 +1,59 @@
+local plugins = {
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.configs.lspconfig"
+    end,
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        -- "sourcery",
+        -- "python-lsp-server",
+        "jedi-language-server",
+        "lua-language-server",
+        "prettier",
+        "stylua",
+      },
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        -- defaults
+        "vim",
+        "lua",
+
+        -- web dev
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "tsx",
+        "json",
+        "vue",
+        -- "svelte",
+
+        -- low level
+        "python",
+        "java",
+      },
+    },
+  },
+  {
+    "jay-babu/mason-null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
+    },
+    lazy = false,
+    config = function()
+      require "custom.configs.null-ls" -- require your null-ls config here (example below)
+    end,
+  },
+}
+return plugins
