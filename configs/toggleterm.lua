@@ -55,6 +55,8 @@ local lazygit = Terminal:new {
 }
 Toggleterms.lazygit = lazygit
 
+return Toggleterms
+
 -- require("toggleterm").setup {
 --     open_mapping = [[<c-\>]],
 --     hide_numbers = true,
