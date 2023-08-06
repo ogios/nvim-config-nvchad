@@ -27,14 +27,16 @@ require("go").setup({
         comment_placeholder = "", -- comment_placeholder your cool placeholder e.g. ﳑ       
         icons = { breakpoint = "🧘", currentpos = "🏃" }, -- setup to `false` to disable icons setup
         verbose = false, -- output loginf in messages
-        lsp_cfg = {
-                capabilities = capabilities,
-        }, -- true: use non-default gopls setup specified in go/lsp.lua
+        -- lsp_cfg = {
+        --         capabilities = capabilities,
+        -- }, -- true: use non-default gopls setup specified in go/lsp.lua
+		lsp_cfg = true,
         -- false: do nothing
         -- if lsp_cfg is a table, merge table with with non-default gopls setup in go/lsp.lua, e.g.
         -- lsp_cfg = {settings={gopls={matcher='CaseInsensitive', ['local'] = 'your_local_module_path', gofumpt = true }}}
         lsp_gofumpt = true,      -- true: set default gofmt in gopls format to gofumpt
-        lsp_on_attach = on_attach, -- nil: use on_attach function defined in go/lsp.lua,
+        -- lsp_on_attach = on_attach, -- nil: use on_attach function defined in go/lsp.lua,
+        lsp_on_attach = nil, -- nil: use on_attach function defined in go/lsp.lua,
         -- when lsp_cfg is true
         -- if lsp_on_attach is a function: use this function as on_attach function for gopls
         lsp_codelens = true, -- set to false to disable codelens, true by default
@@ -49,18 +51,18 @@ require("go").setup({
         lsp_inlay_hints = {
                 enable = true,
                 -- Only show inlay hints for the current line
-                -- only_current_line = false,
+                only_current_line = false,
                 -- Event which triggers a refersh of the inlay hints.
                 -- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but
                 -- not that this may cause higher CPU usage.
                 -- This option is only respected when only_current_line and
                 -- autoSetHints both are true.
-                -- only_current_line_autocmd = "CursorHold",
+                only_current_line_autocmd = "CursorHold",
                 -- whether to show variable name before type hints with the inlay hints or not
                 -- default: false
-                -- show_variable_name = true,
+                show_variable_name = true,
                 -- prefix for parameter hints
-                -- parameter_hints_prefix = " ",
+                parameter_hints_prefix = " ",
                 show_parameter_hints = true,
                 -- prefix for all the other hints (type, chaining)
                 other_hints_prefix = "=> ",
@@ -86,7 +88,7 @@ require("go").setup({
         -- dap_debug_vt = false, -- set to true to enable dap virtual text
         -- build_tags = "", --textobjects = true, -- enable default text jobects through treesittter-text-objects
         test_runner = "dlv",   -- richgo, go test, richgo, dlv, ginkgo
-        run_in_floaterm = false, -- set to true to run in float window. set default build tags
+        run_in_floaterm = true, -- set to true to run in float window. set default build tags
         -- float term recommend if you use richgo/ginkgo with terminal color
         -- trouble = true, -- true: use trouble to open quickfix
 })

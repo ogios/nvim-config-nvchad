@@ -11,6 +11,10 @@ keymap.set('v', "J", ":m '>+1<CR>gv=gv")
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 
+keymap.set("n", "<leader>gr", "<CMD>GoRun -F<CR>")
+
+-- vim.cmd("autocmd FileType go nmap <Leader>gr GoRun -F")
+
 -- local term = require("custom.configs.toggleterm_conf")
 
 -- lazygit
