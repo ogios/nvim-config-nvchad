@@ -37,7 +37,7 @@ Toggleterms.htop = Terminal:new { cmd = "htop", hidden = true }
 Toggleterms.python = Terminal:new { cmd = "python", hidden = true }
 Toggleterms.julia = Terminal:new { cmd = "julia", hidden = true }
 local lazygit = Terminal:new {
-    cmd = "LANG=zh_CN.UTF-8 lazygit",
+    cmd = "lazygit",
     dir = "git_dir",
     direction = "float",
     float_opts = {
