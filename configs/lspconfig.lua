@@ -6,6 +6,9 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
+
+capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+
 lspconfig.jedi_language_server.setup{
   on_attach = on_attach,
   capabilities = capabilities,
