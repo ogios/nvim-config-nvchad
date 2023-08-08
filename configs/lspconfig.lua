@@ -11,6 +11,23 @@ lspconfig.jedi_language_server.setup{
   capabilities = capabilities,
 }
 
+local servers =
+-- { "html", "cssls", "jsonls", "bashls", "tsserver", "tailwindcss", "prismals", "graphql", "eslint" }
+{ "html", "cssls", "jsonls", "bashls", "tsserver", "prismals", "graphql", "eslint" }
+
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end
+
+lspconfig.volar.setup{
+	on_attach=on_attach,
+	capabilities=capabilities,
+}
+
+
 require("go").setup({
         -- NOTE: all LSP and formatting related options are disabeld.
         -- NOTE: LSP is handled by lsp.lua and formatting is handled by null-ls.lua
