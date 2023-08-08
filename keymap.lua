@@ -10,8 +10,13 @@ keymap.set('v', "J", ":m '>+1<CR>gv=gv")
 -- 取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
-
+-- Go.nvim
 keymap.set("n", "<leader>gr", "<CMD>GoRun -F<CR>")
+
+
+-- Minimap
+keymap.set("n", "<leader>mm", "<CMD>MinimapToggle<CR>")
+
 
 -- vim.cmd("autocmd FileType go nmap <Leader>gr GoRun -F")
 
