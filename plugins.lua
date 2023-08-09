@@ -130,10 +130,18 @@ local plugins = {
   {
     "stevearc/dressing.nvim",
     opts = {},
-	lazy = false,
+    lazy = false,
     config = function()
       require "custom.configs.dressing_conf"
     end,
+  },
+  {
+    "glepnir/dashboard-nvim",
+    event = "VimEnter",
+    config = function()
+		require "custom.configs.dashboard_conf"
+    end,
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
   },
 }
 return plugins
