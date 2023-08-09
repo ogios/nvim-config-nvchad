@@ -127,5 +127,13 @@ local plugins = {
       vim.g.minimap_git_colors = 1
     end,
   },
+  {
+    "stevearc/dressing.nvim",
+    opts = {},
+	lazy = false,
+    config = function()
+      require "custom.configs.dressing_conf"
+    end,
+  },
 }
 return plugins

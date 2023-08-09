@@ -30,6 +30,12 @@ Mappings.telescope = {
       end,
       "telescope builtin command",
     },
+    ["<leader>ca"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "telescope builtin code_action",
+    },
   },
 }
 
