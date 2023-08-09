@@ -22,6 +22,14 @@ Mappings.telescope = {
 
     -- theme switcher
     ["<leader>th"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
+
+    -- command
+    ["<leader>md"] = {
+      function()
+        require("telescope.builtin").commands()
+      end,
+      "telescope builtin command",
+    },
   },
 }
 
