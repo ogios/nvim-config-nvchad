@@ -128,20 +128,38 @@ local plugins = {
     end,
   },
   {
-    "stevearc/dressing.nvim",
-    opts = {},
-    lazy = false,
-    config = function()
-      require "custom.configs.dressing_conf"
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    config = function ()
+      require("custom.configs.notice_conf")
     end,
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
   },
-  {
-    "glepnir/dashboard-nvim",
-    event = "VimEnter",
-    config = function()
-		require "custom.configs.dashboard_conf"
-    end,
-    dependencies = { { "nvim-tree/nvim-web-devicons" } },
-  },
+  -- {
+  --   "stevearc/dressing.nvim",
+  --   opts = {},
+  --   lazy = false,
+  --   config = function()
+  --     require "custom.configs.dressing_conf"
+  --   end,
+  -- },
+  -- {
+  --   "glepnir/dashboard-nvim",
+  --   event = "VimEnter",
+  --   config = function()
+  -- require "custom.configs.dashboard_conf"
+  --   end,
+  --   dependencies = { { "nvim-tree/nvim-web-devicons" } },
+  -- },
 }
 return plugins
