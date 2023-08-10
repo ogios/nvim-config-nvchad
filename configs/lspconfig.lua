@@ -2,7 +2,7 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local util = require "lspconfig/util"
+local utils = require "core.utils"
 local diagnosticls = require "custom.configs.diagnosticls"
 
 capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
@@ -11,13 +11,8 @@ lspconfig.jedi_language_server.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
--- lspconfig.diagnosticls.setup {
---   filetypes = { "python" },
---   on_attach = on_attach,
---   capabilities = capabilities
--- }
 
-lspconfig.diagnosticls.setup({
+lspconfig.diagnosticls.setup {
   filetypes = {
     "haskell",
     unpack(diagnosticls.filetypes),
@@ -53,7 +48,7 @@ lspconfig.diagnosticls.setup({
       typescriptreact = "prettier",
     },
   },
-})
+}
 
 local servers =
   -- { "html", "cssls", "jsonls", "bashls", "tsserver", "tailwindcss", "prismals", "graphql", "eslint" }
@@ -67,7 +62,23 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.volar.setup {
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+
+    utils.load_mappings("lspconfig", { buffer = bufnr })
+
+    if client.server_capabilities.signatureHelpProvider then
+      require("nvchad_ui.signature").setup(client)
+    end
+
+    if not utils.load_config().ui.lsp_semantic_tokens and client.supports_method "textDocument/semanticTokens" then
+      client.server_capabilities.semanticTokensProvider = nil
+    end
+    if client.resolved_capabilities then
+      client.resolved_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+    end
+  end,
   capabilities = capabilities,
 }
 
