@@ -14,7 +14,7 @@ local plugins = {
         -- "sourcery",
         -- "python-lsp-server",
         "jedi-language-server",
-        "diagnostic-languageserver",
+        -- "diagnostic-languageserver",
         "autoflake",
         "lua-language-server",
         "prettier",
@@ -66,7 +66,8 @@ local plugins = {
     },
     lazy = false,
     config = function()
-      require "custom.configs.null-ls" -- require your null-ls config here (example below)
+      -- require "custom.configs.null-ls" -- require your null-ls config here (example below)
+      require "custom.configs.null-ls"
     end,
   },
   {
@@ -113,7 +114,8 @@ local plugins = {
   -- },
   {
     "wfxr/minimap.vim",
-    lazy = false,
+    -- lazy = false,
+    event = "VeryLazy",
     build = "cargo install --locked code-minimap",
     cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight" },
     config = function()
@@ -135,8 +137,8 @@ local plugins = {
     opts = {
       -- add any options here
     },
-    config = function ()
-      require("custom.configs.notice_conf")
+    config = function()
+      require "custom.configs.notice_conf"
     end,
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

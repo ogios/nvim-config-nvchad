@@ -12,43 +12,43 @@ lspconfig.jedi_language_server.setup {
   capabilities = capabilities,
 }
 
-lspconfig.diagnosticls.setup {
-  filetypes = {
-    "haskell",
-    unpack(diagnosticls.filetypes),
-  },
-  init_options = {
-    linters = vim.tbl_deep_extend("force", diagnosticls.linters, {
-      hlint = {
-        command = "hlint",
-        -- ...
-      },
-    }),
-    formatters = diagnosticls.formatters,
-    filetypes = {
-      haskell = "hlint",
-      lua = { "luacheck", "selene" },
-      markdown = { "markdownlint" },
-      python = { "flake8", "mypy" },
-      scss = "stylelint",
-      sh = "shellcheck",
-      vim = "vint",
-      yaml = "yamllint",
-    },
-    formatFiletypes = {
-      fish = "fish_indent",
-      javascript = "prettier",
-      javascriptreact = "prettier",
-      json = "prettier",
-      lua = { "lua-format", "stylua" },
-      python = { "isort", "black", "autoflake" },
-      sh = "shfmt",
-      sql = "pg_format",
-      typescript = "prettier",
-      typescriptreact = "prettier",
-    },
-  },
-}
+-- lspconfig.diagnosticls.setup {
+--   filetypes = {
+--     "haskell",
+--     unpack(diagnosticls.filetypes),
+--   },
+--   init_options = {
+--     linters = vim.tbl_deep_extend("force", diagnosticls.linters, {
+--       hlint = {
+--         command = "hlint",
+--         -- ...
+--       },
+--     }),
+--     formatters = diagnosticls.formatters,
+--     filetypes = {
+--       haskell = "hlint",
+--       lua = { "luacheck", "selene" },
+--       markdown = { "markdownlint" },
+--       python = { "flake8", "mypy" },
+--       scss = "stylelint",
+--       sh = "shellcheck",
+--       vim = "vint",
+--       yaml = "yamllint",
+--     },
+--     formatFiletypes = {
+--       fish = "fish_indent",
+--       javascript = "prettier",
+--       javascriptreact = "prettier",
+--       json = "prettier",
+--       lua = { "lua-format", "stylua" },
+--       python = { "isort", "black", "autoflake" },
+--       sh = "shfmt",
+--       sql = "pg_format",
+--       typescript = "prettier",
+--       typescriptreact = "prettier",
+--     },
+--   },
+-- }
 
 local servers =
   -- { "html", "cssls", "jsonls", "bashls", "tsserver", "tailwindcss", "prismals", "graphql", "eslint" }
