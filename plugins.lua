@@ -14,6 +14,8 @@ local plugins = {
         -- "sourcery",
         -- "python-lsp-server",
         "jedi-language-server",
+        "diagnostic-languageserver",
+        "autoflake",
         "lua-language-server",
         "prettier",
         "stylua",
