@@ -39,8 +39,7 @@ Mappings.telescope = {
   },
 }
 
-Mappings.lspconfig = {
-  plugin = true,
+Mappings.abc = {
 
   n = {
 
@@ -56,6 +55,30 @@ Mappings.lspconfig = {
         vim.lsp.buf.definition()
       end,
       "LSP definition",
+    },
+    ["<leader>lK"] = {
+      function()
+        vim.lsp.buf.hover()
+      end,
+      "LSP hover",
+    },
+    ["<leader>li"] = {
+      function()
+        vim.lsp.buf.implementation()
+      end,
+      "lsp implementation",
+    },
+    ["<leader>lr"] = {
+      function()
+        vim.lsp.buf.references()
+      end,
+      "lsp references",
+    },
+    ["<leader>lra"] = {
+      function()
+        require("nvchad.renamer").open()
+      end,
+      "LSP rename",
     },
   },
 }
