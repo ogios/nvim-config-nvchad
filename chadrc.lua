@@ -7,4 +7,5 @@ M.ui = {
 M.plugins = 'custom.plugins'
 M.mappings = {}
 M.mappings.telescope = require('custom.configs.mapping').telescope
+M.mappings.lspconfig = require('custom.configs.mapping').lspconfig
 return M

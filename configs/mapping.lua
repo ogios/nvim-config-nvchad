@@ -39,4 +39,25 @@ Mappings.telescope = {
   },
 }
 
+Mappings.lspconfig = {
+  plugin = true,
+
+  n = {
+
+    ["<leader>lD"] = {
+      function()
+        vim.lsp.buf.declaration()
+      end,
+      "LSP declaration",
+    },
+
+    ["<leader>ld"] = {
+      function()
+        vim.lsp.buf.definition()
+      end,
+      "LSP definition",
+    },
+  },
+}
+
 return Mappings
