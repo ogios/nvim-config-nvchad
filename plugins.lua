@@ -30,6 +30,7 @@ local plugins = {
         "shfmt",
         "shellcheck",
         "vue-language-server",
+        "bash-language-server",
       },
     },
   },
