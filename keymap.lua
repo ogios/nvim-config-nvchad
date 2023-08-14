@@ -1,5 +1,5 @@
 local keymap = vim.keymap
-local nvim_keymap = vim.api.nvim_set_keymap
+-- local nvim_keymap = vim.api.nvim_set_keymap
 
 -- esc
 keymap.set("i", "jk", "<ESC>")
@@ -19,15 +19,27 @@ keymap.set("n", "<leader>gr", "<CMD>GoRun -F<CR>")
 keymap.set("n", "<leader>mm", "<CMD>MinimapToggle<CR>")
 
 
--- lsp defination
--- keymap.set("n", "<leader>ld", "")
--- nvim_keymap("n", "<leader>ld", ":lua vim.lsp.buf.definition()", { desc="lsp definition" })
--- nvim_keymap("n", "<leader>lD", ":lua vim.lsp.buf.declaration()", { desc="lsp declaration" })
--- nvim_keymap("n", "<leader>lK", ":lua vim.lsp.buf.hover()", { desc="lsp hover" })
--- nvim_keymap("n", "<leader>li", ":lua vim.lsp.buf.implementation()", { desc="lsp implementation" })
--- nvim_keymap("n", "<leader>lr", ":lua vim.lsp.buf.references()", { desc="lsp references" })
--- nvim_keymap("n", "<leader>lra", ":lua require('nvchad.renamer').open()", { desc="lsp rename" })
+local opts = {}
+vim.api.nvim_set_keymap("v", "<C-r>", "<CMD>SearchReplaceSingleBufferVisualSelection<CR>", opts)
+vim.api.nvim_set_keymap("v", "<C-s>", "<CMD>SearchReplaceWithinVisualSelection<CR>", opts)
+vim.api.nvim_set_keymap("v", "<C-b>", "<CMD>SearchReplaceWithinVisualSelectionCWord<CR>", opts)
 
+vim.api.nvim_set_keymap("n", "<leader>rs", "<CMD>SearchReplaceSingleBufferSelections<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>ro", "<CMD>SearchReplaceSingleBufferOpen<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>rw", "<CMD>SearchReplaceSingleBufferCWord<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>rW", "<CMD>SearchReplaceSingleBufferCWORD<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>re", "<CMD>SearchReplaceSingleBufferCExpr<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>rf", "<CMD>SearchReplaceSingleBufferCFile<CR>", opts)
+
+vim.api.nvim_set_keymap("n", "<leader>rbs", "<CMD>SearchReplaceMultiBufferSelections<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>rbo", "<CMD>SearchReplaceMultiBufferOpen<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>rbw", "<CMD>SearchReplaceMultiBufferCWord<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>rbW", "<CMD>SearchReplaceMultiBufferCWORD<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>rbe", "<CMD>SearchReplaceMultiBufferCExpr<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>rbf", "<CMD>SearchReplaceMultiBufferCFile<CR>", opts)
+
+-- show the effects of a search / replace in a live preview window
+vim.o.inccommand = "split"
 
 
 -- vim.cmd("autocmd FileType go nmap <Leader>gr GoRun -F")
