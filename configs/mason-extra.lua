@@ -94,7 +94,7 @@ local extra = {
       "typescript-language-server",
       "eslint-lsp",
       "json-lsp",
-      "tailwindcss-language-server",
+      -- "tailwindcss-language-server",
       "shfmt",
       "shellcheck",
       "vue-language-server",
