@@ -77,6 +77,7 @@ local plugins = {
         -- low level
         "python",
         "java",
+        "go",
       },
       indent = {
         enable = true,
@@ -217,5 +218,7 @@ local plugins = {
     end,
   },
   { import = "custom.configs.symbols-outline" },
+  { import = "custom.configs.trouble_conf" },
+  { import = "custom.configs.nvim-surround_conf" },
 }
 return plugins

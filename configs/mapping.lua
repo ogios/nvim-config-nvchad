@@ -39,7 +39,7 @@ Mappings.telescope = {
   },
 }
 
-Mappings.abc = {
+Mappings.newlsp = {
 
   n = {
 
@@ -83,4 +83,9 @@ Mappings.abc = {
   },
 }
 
+Mappings.abc = {
+  n = {
+    ["qw"] = {"viw", "select word in visual mode"},
+  }
+}
 return Mappings
