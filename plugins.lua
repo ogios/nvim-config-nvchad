@@ -1,4 +1,5 @@
 local plugins = {
+  { "nvim-tree/nvim-web-devicons", lazy=false },
   {
     "neovim/nvim-lspconfig",
     event = { "VeryLazy", "BufRead" },
