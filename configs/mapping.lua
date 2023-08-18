@@ -86,6 +86,7 @@ Mappings.newlsp = {
 Mappings.abc = {
   n = {
     ["qw"] = {"viw", "select word in visual mode"},
+    ["<leader>ms"] = {"<CMD>SymbolsOutline<CR>", "open up code structure map"},
   }
 }
 return Mappings

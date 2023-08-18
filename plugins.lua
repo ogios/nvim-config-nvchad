@@ -217,6 +217,14 @@ local plugins = {
       }
     end,
   },
+  {
+    "folke/edgy.nvim",
+    event = "VeryLazy",
+    opts = {},
+    config = function ()
+      require("edgy").setup()
+    end
+  },
   { import = "custom.configs.symbols-outline" },
   { import = "custom.configs.trouble_conf" },
   { import = "custom.configs.nvim-surround_conf" },
