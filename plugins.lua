@@ -1,36 +1,58 @@
 local plugins = {
   {
     "neovim/nvim-lspconfig",
+    event = { "VeryLazy", "BufRead" },
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      -- require "plugins.configs.lspconfig"
+      -- require "custom.configs.lspconfig"
     end,
+    dependencies = {
+      require "custom.configs.mason-extra",
+      "williamboman/mason-lspconfig",
+    },
   },
+  -- {
+  --   "williamboman/mason.nvim",
+  --   lazy = false,
+  --   opts = {
+  --     ensure_installed = {
+  --       -- "sourcery",
+  --       -- "python-lsp-server",
+  --       "jedi-language-server",
+  --       -- "diagnostic-languageserver",
+  --       "autoflake",
+  --       "lua-language-server",
+  --       "prettier",
+  --       "stylua",
+  --       "golangci-lint-langserver",
+  --       "gopls",
+  --       "css-lsp",
+  --       "html-lsp",
+  --       "typescript-language-server",
+  --       "eslint-lsp",
+  --       "json-lsp",
+  --       "tailwindcss-language-server",
+  --       "shfmt",
+  --       "shellcheck",
+  --       "vue-language-server",
+  --       "bash-language-server",
+  --     },
+  --   },
+  -- },
   {
-    "williamboman/mason.nvim",
-    lazy = false,
+    "nvim-tree/nvim-tree.lua",
     opts = {
-      ensure_installed = {
-        -- "sourcery",
-        -- "python-lsp-server",
-        "jedi-language-server",
-        -- "diagnostic-languageserver",
-        "autoflake",
-        "lua-language-server",
-        "prettier",
-        "stylua",
-        "golangci-lint-langserver",
-        "gopls",
-        "css-lsp",
-        "html-lsp",
-        "typescript-language-server",
-        "eslint-lsp",
-        "json-lsp",
-        "tailwindcss-language-server",
-        "shfmt",
-        "shellcheck",
-        "vue-language-server",
-        "bash-language-server",
+      -- git = {
+      --   enable = true,
+      -- },
+
+      renderer = {
+        highlight_git = true,
+        icons = {
+          show = {
+            git = true,
+          },
+        },
       },
     },
   },
@@ -55,6 +77,9 @@ local plugins = {
         -- low level
         "python",
         "java",
+      },
+      indent = {
+        enable = true,
       },
     },
   },
@@ -88,7 +113,7 @@ local plugins = {
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
-    config = function() end,
+    config = require("custom.configs.go_conf").config,
     event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
@@ -191,5 +216,6 @@ local plugins = {
       }
     end,
   },
+  { import = "custom.configs.symbols-outline" },
 }
 return plugins

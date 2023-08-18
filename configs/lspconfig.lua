@@ -3,7 +3,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
 local utils = require "core.utils"
-local diagnosticls = require "custom.configs.diagnosticls"
+-- local diagnosticls = require "custom.configs.diagnosticls"
 
 capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
