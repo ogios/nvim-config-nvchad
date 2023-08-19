@@ -5,8 +5,8 @@ local keymap = vim.keymap
 keymap.set("i", "jk", "<ESC>")
 
 -- 单行或多行移动
-keymap.set('v', "K", ":m '<-2<CR>gv=gv")
-keymap.set('v', "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
 -- 取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>")
@@ -14,10 +14,8 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 -- Go.nvim
 keymap.set("n", "<leader>gr", "<CMD>GoRun -F<CR>")
 
-
 -- Minimap
 keymap.set("n", "<leader>mm", "<CMD>MinimapToggle<CR>")
-
 
 local opts = {}
 vim.api.nvim_set_keymap("v", "<C-r>", "<CMD>SearchReplaceSingleBufferVisualSelection<CR>", opts)
@@ -40,7 +38,6 @@ vim.api.nvim_set_keymap("n", "<leader>rbf", "<CMD>SearchReplaceMultiBufferCFile<
 
 -- show the effects of a search / replace in a live preview window
 vim.o.inccommand = "split"
-
 
 -- vim.cmd("autocmd FileType go nmap <Leader>gr GoRun -F")
 

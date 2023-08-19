@@ -29,6 +29,7 @@ require("go").setup {
   gotests_template_dir = "", -- sets gotests -template_dir parameter (check gotests for details)
   comment_placeholder = "", -- comment_placeholder your cool placeholder e.g. ﳑ       
   icons = { breakpoint = "🧘", currentpos = "🏃" }, -- setup to `false` to disable icons setup
+  -- icons = false,
   verbose = false, -- output loginf in messages
   -- lsp_cfg = {
   --         capabilities = capabilities,
@@ -45,12 +46,14 @@ require("go").setup {
   lsp_codelens = true, -- set to false to disable codelens, true by default
   lsp_keymaps = false, -- set to false to disable gopls/lsp keymap
   lsp_diag_hdlr = true, -- hook lsp diag handler
-  lsp_diag_underline = false,
+  lsp_diag_underline = true,
   -- virtual text setup
-  lsp_diag_virtual_text = { space = 0, prefix = "ﳑ" },
+  -- lsp_diag_virtual_text = { space = 0, prefix = "ﳑ" },
+  -- lsp_diag_virtual_text = { space = 0, prefix = "" },
+  lsp_diag_virtual_text = true,
   lsp_diag_signs = true,
   lsp_diag_update_in_insert = true,
-  lsp_document_formatting = false, -- true: use gopls to format, false: use other formatter tool
+  lsp_document_formatting = true, -- true: use gopls to format, false: use other formatter tool
   lsp_inlay_hints = {
     enable = true,
     -- Only show inlay hints for the current line
@@ -66,6 +69,7 @@ require("go").setup {
     show_variable_name = true,
     -- prefix for parameter hints
     parameter_hints_prefix = " ",
+    -- parameter_hints_prefix = " ",
     show_parameter_hints = true,
     -- prefix for all the other hints (type, chaining)
     other_hints_prefix = "=> ",

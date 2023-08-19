@@ -5,3 +5,6 @@ require("custom.configs.go_conf")
 if vim.g.neovide then
 	require("custom.neovide")
 end
+
+
+local a = "a"

@@ -1,5 +1,5 @@
 local plugins = {
-  { "nvim-tree/nvim-web-devicons", lazy=false },
+  -- { "nvim-tree/nvim-web-devicons", lazy=false },
   {
     "neovim/nvim-lspconfig",
     event = { "VeryLazy", "BufRead" },
@@ -217,14 +217,6 @@ local plugins = {
         default_replace_multi_buffer_options = "egcI",
       }
     end,
-  },
-  {
-    "folke/edgy.nvim",
-    event = "VeryLazy",
-    opts = {},
-    config = function ()
-      require("edgy").setup()
-    end
   },
   { import = "custom.configs.symbols-outline" },
   { import = "custom.configs.trouble_conf" },

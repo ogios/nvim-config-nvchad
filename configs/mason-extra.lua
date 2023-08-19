@@ -32,12 +32,11 @@ local setup = function(_, opts)
     },
   }
 
-
   -- after
   local lspconfig = require "lspconfig"
 
   -- List of servers to install
-  local servers = { "html", "cssls", "tsserver", "jedi_language_server", "jsonls", "bashls", "prismals", "graphql" }
+  local servers = { "html", "cssls", "tsserver", "jedi_language_server", "jsonls", "bashls", "prismals", "graphql", "volar" }
 
   require("mason").setup(opts)
 
