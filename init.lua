@@ -6,5 +6,4 @@ if vim.g.neovide then
 	require("custom.neovide")
 end
 
-
-local a = "a"
+vim.g.vscode_snippets_path = vim.fn.stdpath "config" .. "/lua/custom/snippets"
