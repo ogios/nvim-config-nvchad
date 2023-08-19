@@ -1,10 +1,11 @@
-local dashboard = require("dashboard")
-math.randomseed(os.time())
-local logo_names = { "night_fury", "western_dragon" }
-local random_logo_name = logo_names[math.random(1, #logo_names)]
+local setup = function()
+  local dashboard = require "dashboard"
+  math.randomseed(os.time())
+  local logo_names = { "night_fury", "western_dragon" }
+  local random_logo_name = logo_names[math.random(1, #logo_names)]
 
-local logo = {
-  night_fury = [[
+  local logo = {
+    night_fury = [[
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣶⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⠿⣋⣭⢍⣩⣝⢿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⡿⣿⣿⣶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⣫⣶⣿⣟⣵⣿⣿⣿⣷⣝⢿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⡿⣣⣶⣶⣄⡲⣬⣍⡛⠿⣶⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -27,7 +28,7 @@ local logo = {
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡿⣵⣿⣿⡏⣾⠿⠛⠛⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠋⠉⠉⠁⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   ]],
-  western_dragon = [[
+    western_dragon = [[
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⢠⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⡄⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣶⣿⠛⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠛⣿⣶⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣴⣶⣿⡿⣟⣽⡏⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⢹⣯⣻⢿⣿⣶⣦⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -49,7 +50,7 @@ local logo = {
   ⠀⠀⠀⠀⡟⠀⠀⠀⠀⠀⠀⢻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡟⠀⠀⠀⠀⠀⠀⢿⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   ]],
-  loc_nek = [[
+    loc_nek = [[
   ██╗      ██████╗  ██████╗    ███╗   ██╗███████╗██╗  ██╗
   ██║     ██╔═══██╗██╔════╝    ████╗  ██║██╔════╝██║ ██╔╝
   ██║     ██║   ██║██║         ██╔██╗ ██║█████╗  █████╔╝
@@ -57,12 +58,11 @@ local logo = {
   ███████╗╚██████╔╝╚██████╗    ██║ ╚████║███████╗██║  ██╗
   ╚══════╝ ╚═════╝  ╚═════╝    ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝
   ]],
-}
+  }
 
-
-local current_day = ((os.date "*t".wday) - 1)%7 + 1
-local days_of_week = {
-   [[
+  local current_day = (os.date("*t").wday - 1) % 7 + 1
+  local days_of_week = {
+    [[
 ███╗   ███╗ ██████╗ ███╗   ██╗██████╗  █████╗ ██╗   ██╗
 ████╗ ████║██╔═══██╗████╗  ██║██╔══██╗██╔══██╗╚██╗ ██╔╝
 ██╔████╔██║██║   ██║██╔██╗ ██║██║  ██║███████║ ╚████╔╝⠀
@@ -70,7 +70,7 @@ local days_of_week = {
 ██║ ╚═╝ ██║╚██████╔╝██║ ╚████║██████╔╝██║  ██║   ██║⠀⠀⠀
 ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝   ╚═╝⠀⠀⠀
   ]],
-	[[
+    [[
 ████████╗██╗   ██╗███████╗███████╗██████╗  █████╗ ██╗   ██╗
 ╚══██╔══╝██║   ██║██╔════╝██╔════╝██╔══██╗██╔══██╗╚██╗ ██╔╝
    ██║   ██║   ██║█████╗  ███████╗██║  ██║███████║ ╚████╔╝⠀
@@ -78,7 +78,7 @@ local days_of_week = {
    ██║   ╚██████╔╝███████╗███████║██████╔╝██║  ██║   ██║⠀⠀⠀
    ╚═╝    ╚═════╝ ╚══════╝╚══════╝╚═════╝ ╚═╝  ╚═╝   ╚═╝⠀⠀⠀
   ]],
- [[
+    [[
 ██╗    ██╗███████╗██████╗ ███╗   ██╗███████╗███████╗██████╗  █████╗ ██╗   ██╗
 ██║    ██║██╔════╝██╔══██╗████╗  ██║██╔════╝██╔════╝██╔══██╗██╔══██╗╚██╗ ██╔╝
 ██║ █╗ ██║█████╗  ██║  ██║██╔██╗ ██║█████╗  ███████╗██║  ██║███████║ ╚████╔╝⠀
@@ -86,7 +86,7 @@ local days_of_week = {
 ╚███╔███╔╝███████╗██████╔╝██║ ╚████║███████╗███████║██████╔╝██║  ██║   ██║⠀⠀⠀
  ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝╚═════╝ ╚═╝  ╚═╝   ╚═╝⠀⠀⠀
   ]],
-   [[
+    [[
 ████████╗██╗  ██╗██╗   ██╗██████╗ ███████╗██████╗  █████╗ ██╗   ██╗
 ╚══██╔══╝██║  ██║██║   ██║██╔══██╗██╔════╝██╔══██╗██╔══██╗╚██╗ ██╔╝
    ██║   ███████║██║   ██║██████╔╝███████╗██║  ██║███████║ ╚████╔╝⠀
@@ -94,7 +94,7 @@ local days_of_week = {
    ██║   ██║  ██║╚██████╔╝██║  ██║███████║██████╔╝██║  ██║   ██║⠀⠀⠀
    ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝ ╚═╝  ╚═╝   ╚═╝⠀⠀⠀
   ]],
- [[
+    [[
 ███████╗██████╗ ██╗██████╗  █████╗ ██╗   ██╗
 ██╔════╝██╔══██╗██║██╔══██╗██╔══██╗╚██╗ ██╔╝
 █████╗  ██████╔╝██║██║  ██║███████║ ╚████╔╝⠀
@@ -102,7 +102,7 @@ local days_of_week = {
 ██║     ██║  ██║██║██████╔╝██║  ██║   ██║⠀⠀⠀
 ╚═╝     ╚═╝  ╚═╝╚═╝╚═════╝ ╚═╝  ╚═╝   ╚═╝⠀⠀⠀
   ]],
-   [[
+    [[
 ███████╗ █████╗ ████████╗██╗   ██╗██████╗ ██████╗  █████╗ ██╗   ██╗
 ██╔════╝██╔══██╗╚══██╔══╝██║   ██║██╔══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝
 ███████╗███████║   ██║   ██║   ██║██████╔╝██║  ██║███████║ ╚████╔╝⠀
@@ -110,7 +110,7 @@ local days_of_week = {
 ███████║██║  ██║   ██║   ╚██████╔╝██║  ██║██████╔╝██║  ██║   ██║⠀⠀⠀
 ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝   ╚═╝⠀⠀⠀
   ]],
- [[
+    [[
 ███████╗██╗   ██╗███╗   ██╗██████╗  █████╗ ██╗   ██╗
 ██╔════╝██║   ██║████╗  ██║██╔══██╗██╔══██╗╚██╗ ██╔╝
 ███████╗██║   ██║██╔██╗ ██║██║  ██║███████║ ╚████╔╝⠀
@@ -118,99 +118,108 @@ local days_of_week = {
 ███████║╚██████╔╝██║ ╚████║██████╔╝██║  ██║   ██║⠀⠀⠀
 ╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝   ╚═╝⠀⠀⠀
   ]],
-}
+  }
 
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = "LazyVimStarted",
-  callback = function()
-    local stats = require("lazy").stats()
-    local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-    dashboard.setup({
-      theme = "doom",
-      hide = {
-        statusline = 0,
-        tabline = 0,
-        winbar = 0,
-      },
-      shortcut = {
-        { desc = " Update", group = "@property", action = "Lazy update", key = "u" },
-      },
-      config = {
-        -- header = vim.split(logo[random_logo_name], "\n"), --your header
-        -- header = vim.split(
-        --   "\n\n\n" .. days_of_week[current_day] .. "\n\n" .. os.date("%Y-%m-%d %H:%M:%S" .. "\n"),
-        --   "\n"
-        -- ), --your header
-        center = {
-          {
-            icon = "   ",
-            icon_hl = "DashboardRecent",
-            desc = "Recent Files                                    ",
-            -- desc_hi = "String",
-            key = "r",
-            key_hl = "DashboardRecent",
-            action = "Telescope oldfiles",
-          },
-          {
-            icon = "   ",
-            icon_hl = "DashboardSession",
-            desc = "Last Session",
-            -- desc_hi = "String",
-            key = "s",
-            key_hl = "DashboardSession",
-            action = "lua require('persistence').load({last = true})",
-          },
-          -- {
-          --   icon = "   ",
-          --   icon_hl = "DashboardProject",
-          --   desc = "Find Project",
-          --   -- desc_hi = "String",
-          --   key = "p",
-          --   key_hl = "DashboardProject",
-          --   action = "Telescope projects",
-          -- },
-          {
-            icon = "   ",
-            icon_hl = "DashboardConfiguration",
-            desc = "Configuration",
-            -- desc_hi = "String",
-            key = "i",
-            key_hl = "DashboardConfiguration",
-            action = "edit $MYVIMRC",
-          },
-          {
-            icon = "󰤄   ",
-            icon_hl = "DashboardLazy",
-            desc = "Lazy",
-            -- desc_hi = "String",
-            key = "l",
-            key_hl = "DashboardLazy",
-            action = "Lazy",
-          },
-          {
-            icon = "   ",
-            icon_hl = "DashboardServer",
-            desc = "Mason",
-            -- desc_hi = "String",
-            key = "m",
-            key_hl = "DashboardServer",
-            action = "Mason",
-          },
-          {
-            icon = "   ",
-            icon_hl = "DashboardQuit",
-            desc = "Quit Neovim",
-            -- desc_hi = "String",
-            key = "q",
-            key_hl = "DashboardQuit",
-            action = "qa",
-          },
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "LazyVimStarted",
+    callback = function()
+      local stats = require("lazy").stats()
+      local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+      dashboard.setup {
+        theme = "doom",
+        hide = {
+          statusline = 0,
+          tabline = 0,
+          winbar = 0,
         },
-        footer = {
-          "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms",
-        }, --your footer
-      },
-    })
+        shortcut = {
+          { desc = " Update", group = "@property", action = "Lazy update", key = "u" },
+        },
+        config = {
+          -- header = vim.split(logo[random_logo_name], "\n"), --your header
+          -- header = vim.split(
+          --   "\n\n\n" .. days_of_week[current_day] .. "\n\n" .. os.date("%Y-%m-%d %H:%M:%S" .. "\n"),
+          --   "\n"
+          -- ), --your header
+          center = {
+            {
+              icon = "   ",
+              icon_hl = "DashboardRecent",
+              desc = "Recent Files                                    ",
+              -- desc_hi = "String",
+              key = "r",
+              key_hl = "DashboardRecent",
+              action = "Telescope oldfiles",
+            },
+            {
+              icon = "   ",
+              icon_hl = "DashboardSession",
+              desc = "Last Session",
+              -- desc_hi = "String",
+              key = "s",
+              key_hl = "DashboardSession",
+              action = "lua require('persistence').load({last = true})",
+            },
+            -- {
+            --   icon = "   ",
+            --   icon_hl = "DashboardProject",
+            --   desc = "Find Project",
+            --   -- desc_hi = "String",
+            --   key = "p",
+            --   key_hl = "DashboardProject",
+            --   action = "Telescope projects",
+            -- },
+            {
+              icon = "   ",
+              icon_hl = "DashboardConfiguration",
+              desc = "Configuration",
+              -- desc_hi = "String",
+              key = "i",
+              key_hl = "DashboardConfiguration",
+              action = "edit $MYVIMRC",
+            },
+            {
+              icon = "󰤄   ",
+              icon_hl = "DashboardLazy",
+              desc = "Lazy",
+              -- desc_hi = "String",
+              key = "l",
+              key_hl = "DashboardLazy",
+              action = "Lazy",
+            },
+            {
+              icon = "   ",
+              icon_hl = "DashboardServer",
+              desc = "Mason",
+              -- desc_hi = "String",
+              key = "m",
+              key_hl = "DashboardServer",
+              action = "Mason",
+            },
+            {
+              icon = "   ",
+              icon_hl = "DashboardQuit",
+              desc = "Quit Neovim",
+              -- desc_hi = "String",
+              key = "q",
+              key_hl = "DashboardQuit",
+              action = "qa",
+            },
+          },
+          footer = {
+            "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms",
+          }, --your footer
+        },
+      }
+    end,
+  })
+end
+
+return {
+  "glepnir/dashboard-nvim",
+  event = "VimEnter",
+  config = function()
+    setup()
   end,
-})
+  dependencies = { { "nvim-tree/nvim-web-devicons" } },
+}

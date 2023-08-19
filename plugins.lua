@@ -1,5 +1,4 @@
 local plugins = {
-  -- { "nvim-tree/nvim-web-devicons", lazy=false },
   {
     "neovim/nvim-lspconfig",
     event = { "VeryLazy", "BufRead" },
@@ -12,34 +11,6 @@ local plugins = {
       "williamboman/mason-lspconfig",
     },
   },
-  -- {
-  --   "williamboman/mason.nvim",
-  --   lazy = false,
-  --   opts = {
-  --     ensure_installed = {
-  --       -- "sourcery",
-  --       -- "python-lsp-server",
-  --       "jedi-language-server",
-  --       -- "diagnostic-languageserver",
-  --       "autoflake",
-  --       "lua-language-server",
-  --       "prettier",
-  --       "stylua",
-  --       "golangci-lint-langserver",
-  --       "gopls",
-  --       "css-lsp",
-  --       "html-lsp",
-  --       "typescript-language-server",
-  --       "eslint-lsp",
-  --       "json-lsp",
-  --       "tailwindcss-language-server",
-  --       "shfmt",
-  --       "shellcheck",
-  --       "vue-language-server",
-  --       "bash-language-server",
-  --     },
-  --   },
-  -- },
   {
     "nvim-tree/nvim-tree.lua",
     opts = {
@@ -59,7 +30,16 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    -- dependencies = {
+    --   require "custom.configs.plugins.ts-autotag_conf",
+    -- },
     opts = {
+
+      highlight = {
+        enable = true,
+        use_languagetree = true,
+      },
+
       ensure_installed = {
         -- defaults
         "vim",
@@ -83,6 +63,12 @@ local plugins = {
       indent = {
         enable = true,
       },
+      -- autotag = {
+      --   enable = true,
+      --   enable_rename = true,
+      --   enable_close = true,
+      --   enable_close_on_slash = true,
+      -- },
     },
   },
   {
@@ -98,128 +84,28 @@ local plugins = {
       require "custom.configs.null-ls"
     end,
   },
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    opts = {},
-    event = "VeryLazy",
-    -- lazy = false,
-    config = function()
-      require "custom.configs.toggleterm_conf"
-    end,
-  },
-  {
-    "ray-x/go.nvim",
-    dependencies = { -- optional packages
-      "ray-x/guihua.lua",
-      "neovim/nvim-lspconfig",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = require("custom.configs.go_conf").config,
-    event = { "CmdlineEnter" },
-    ft = { "go", "gomod" },
-    build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-  },
+  { import = "custom.configs.plugins.toggleterm_conf" },
+  { import = "custom.configs.plugins.go_conf" },
   {
     "equalsraf/neovim-gui-shim",
     lazy = false,
   },
-  -- {
-  --   "wfxr/minimap.vim",
-  --   build = "cargo install --locked code-minimap",
-  --   lazy = false,
-  --   cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight" },
-  --   init = function()
-  --     vim.cmd "let g:minimap_width = 10"
-  --     vim.cmd "let g:minimap_auto_start = 1"
-  --     vim.cmd "let g:minimap_auto_start_win_enter = 1"
-  --   end,
-  --   -- config = function()
-  --   --     vim.cmd("let g:minimap_width = 10")
-  --   --     vim.cmd("let g:minimap_auto_start = 1")
-  --   --     vim.cmd("let g:minimap_auto_start_win_enter = 1")
-  --   -- end,
-  -- },
-  {
-    "wfxr/minimap.vim",
-    -- lazy = false,
-    event = "VeryLazy",
-    build = "cargo install --locked code-minimap",
-    cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight" },
-    config = function()
-      vim.g.minimap_width = 10
-      vim.g.minimap_auto_start = 1
-      vim.g.minimap_auto_start_win_enter = 1
-      vim.g.minimap_left = 0
-      vim.g.minimap_block_filetypes = { "fugitive", "nvim-tree", "tagbar", "fzf", "telescope", "NvimTree" }
-      vim.g.minimap_block_buftypes = { "nofile", "nowrite", "quickfix", "terminal", "prompt", "NvimTree" }
-      vim.g.minimap_close_filetypes = { "startify", "netrw", "vim-plug", "NvimTree" }
-      vim.g.minimap_highlight_range = 1
-      vim.g.minimap_highlight_search = 1
-      vim.g.minimap_git_colors = 1
-    end,
-  },
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
-    config = function()
-      require "custom.configs.notice_conf"
-    end,
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    },
-  },
-  -- {
-  --   "stevearc/dressing.nvim",
-  --   opts = {},
-  --   lazy = false,
-  --   config = function()
-  --     require "custom.configs.dressing_conf"
-  --   end,
-  -- },
-  -- {
-  --   "glepnir/dashboard-nvim",
-  --   event = "VimEnter",
-  --   config = function()
-  -- require "custom.configs.dashboard_conf"
-  --   end,
-  --   dependencies = { { "nvim-tree/nvim-web-devicons" } },
-  -- },
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    ---@type Flash.Config
-    opts = {},
-    -- stylua: ignore
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    },
-  },
-  {
-    "roobert/search-replace.nvim",
-    lazy = false,
-    config = function()
-      require("search-replace").setup {
-        -- optionally override defaults
-        default_replace_single_buffer_options = "gcI",
-        default_replace_multi_buffer_options = "egcI",
-      }
-    end,
-  },
-  { import = "custom.configs.symbols-outline" },
-  { import = "custom.configs.trouble_conf" },
-  { import = "custom.configs.nvim-surround_conf" },
+  { import = "custom.configs.plugins.minimap_conf" },
+  { import = "custom.configs.plugins.noice_conf" },
+  -- { import = "custom.configs.plugins.dressing_conf" },
+  -- { import = "custom.configs.plugins.dashboard_conf" },
+  { import = "custom.configs.plugins.flash_conf" },
+  { import = "custom.configs.plugins.search-replace_conf" },
+  { import = "custom.configs.plugins.symbols-outline_conf" },
+  { import = "custom.configs.plugins.trouble_conf" },
+  { import = "custom.configs.plugins.nvim-surround_conf" },
+  { import = "custom.configs.plugins.neogen_conf" },
+  { import = "custom.configs.plugins.drop_conf" },
+  { import = "custom.configs.plugins.windows_conf" },
+  { import = "custom.configs.plugins.ts-autotag_conf" },
+  { import = "custom.configs.plugins.neorg_conf" },
+  { import = "custom.configs.plugins.vim-matchup_conf" },
+  -- { import = "custom.configs.plugins.satellite_conf" },
+  -- { import = "custom.configs.tokyonight_conf" },
 }
 return plugins

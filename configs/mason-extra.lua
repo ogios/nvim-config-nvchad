@@ -36,7 +36,8 @@ local setup = function(_, opts)
   local lspconfig = require "lspconfig"
 
   -- List of servers to install
-  local servers = { "html", "cssls", "tsserver", "jedi_language_server", "jsonls", "bashls", "prismals", "graphql", "volar" }
+  local servers =
+    { "html", "cssls", "tsserver", "jedi_language_server", "jsonls", "bashls", "prismals", "graphql", "volar" }
 
   require("mason").setup(opts)
 
@@ -113,12 +114,20 @@ local setup = function(_, opts)
           },
         },
         settings = {
-          typescript = {
-            preferences = {
-              -- "relative" | "non-relative" | "auto" | "shortest"(not sure)
-              importModuleSpecifier = "non-relative",
+          vue = {
+            autoInsert = {
+              dotValue = true,
             },
+            updateImportsOnFileMove = {
+              enabled = true,
+            }
           },
+          -- typescript = {
+          --   preferences = {
+          --     -- "relative" | "non-relative" | "auto" | "shortest"(not sure)
+          --     importModuleSpecifier = "non-relative",
+          --   },
+          -- },
         },
       }
     end,
