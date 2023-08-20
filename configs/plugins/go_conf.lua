@@ -47,7 +47,7 @@ local setup =  function()
     lsp_diag_virtual_text = true,
     lsp_diag_signs = true,
     lsp_diag_update_in_insert = true,
-    lsp_document_formatting = true, -- true: use gopls to format, false: use other formatter tool
+    lsp_document_formatting = false, -- true: use gopls to format, false: use other formatter tool
     lsp_inlay_hints = {
       enable = true,
       -- Only show inlay hints for the current line
@@ -116,8 +116,8 @@ return {
   config = function ()
     setup()
   end,
-  -- event = { "CmdlineEnter" },
-  event = { "BufEnter *.go" },
+  event = { "CmdlineEnter" },
+  -- event = { "BufEnter *.go" },
   ft = { "go", "gomod" },
   build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 }
