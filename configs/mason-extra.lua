@@ -37,7 +37,7 @@ local setup = function(_, opts)
 
   -- List of servers to install
   local servers =
-    { "luals", "gopls", "html", "cssls", "tsserver", "jedi_language_server", "jsonls", "bashls", "prismals", "graphql", "volar" }
+    { "lua_ls", "gopls", "html", "cssls", "tsserver", "jedi_language_server", "jsonls", "bashls", "prismals", "graphql", "volar" }
 
   -- require("mason").setup(opts)
   require("mason").setup()
