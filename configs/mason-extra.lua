@@ -162,7 +162,7 @@ local extra = {
       "json-lsp",
       -- "tailwindcss-language-server",
       "shfmt",
-      "shellcheck",
+      -- "shellcheck",
       "vue-language-server",
       "bash-language-server",
     },
