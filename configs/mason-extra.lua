@@ -37,9 +37,10 @@ local setup = function(_, opts)
 
   -- List of servers to install
   local servers =
-    { "html", "cssls", "tsserver", "jedi_language_server", "jsonls", "bashls", "prismals", "graphql", "volar" }
+    { "lua_ls", "gopls", "html", "cssls", "tsserver", "jedi_language_server", "jsonls", "bashls", "prismals", "graphql", "volar" }
 
-  require("mason").setup(opts)
+  -- require("mason").setup(opts)
+  require("mason").setup()
 
   require("mason-lspconfig").setup {
     ensure_installed = servers,
@@ -161,7 +162,7 @@ local extra = {
       "json-lsp",
       -- "tailwindcss-language-server",
       "shfmt",
-      "shellcheck",
+      -- "shellcheck",
       "vue-language-server",
       "bash-language-server",
     },

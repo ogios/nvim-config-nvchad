@@ -8,7 +8,7 @@ local sources = {
   formatting.prettier,
   formatting.stylua,
 
-  lint.shellcheck,
+  -- lint.shellcheck,
 }
 
 null_ls.setup {
@@ -24,7 +24,7 @@ require("mason-null-ls").setup {
     "prettierd",
     "eslint",
     "stylua",
-    "shellcheck",
+    -- "shellcheck",
     "flake8",
     "autoflake",
   },
