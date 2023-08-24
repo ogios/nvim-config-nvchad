@@ -27,6 +27,7 @@ require("mason-null-ls").setup {
     -- "shellcheck",
     "flake8",
     "autoflake",
+    "goimports",
   },
   automatic_setup = true,
   handlers = {},

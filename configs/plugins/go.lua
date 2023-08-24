@@ -13,11 +13,12 @@ local setup =  function()
     -- NOTE: LSP is handled by lsp.lua and formatting is handled by null-ls.lua
     -- NOTE: via `lsp_on_attach` the custom callback used by all other LSPs is called
     go = "go", -- go command, can be go[default] or go1.18beta1
-    goimport = "gopls", -- goimport command, can be gopls[default] or goimport
+    -- goimport = "gopls", -- goimport command, can be gopls[default] or goimport
+    goimport = "goimports", -- goimport command, can be gopls[default] or goimport
     fillstruct = "gopls", -- can be nil (use fillstruct, slower) and gopls
     gofmt = "gofumpt", -- gofmt cmd,
     max_line_len = 128, -- max line length in golines format, Target maximum line length for golines
-    tag_transform = false, -- can be transform option("snakecase", "camelcase", etc) check gomodifytags for details and more options
+    tag_transform = true, -- can be transform option("snakecase", "camelcase", etc) check gomodifytags for details and more options
     tag_options = "json=omitempty", -- sets options sent to gomodifytags, i.e., json=omitempty
     gotests_template = "", -- sets gotests -template parameter (check gotests for details)
     gotests_template_dir = "", -- sets gotests -template_dir parameter (check gotests for details)
@@ -62,7 +63,7 @@ local setup =  function()
       -- default: false
       show_variable_name = true,
       -- prefix for parameter hints
-      parameter_hints_prefix = " ",
+      parameter_hints_prefix = "󰊕 ",
       -- parameter_hints_prefix = " ",
       show_parameter_hints = true,
       -- prefix for all the other hints (type, chaining)
@@ -116,8 +117,8 @@ return {
   config = function ()
     setup()
   end,
-  event = { "CmdlineEnter" },
-  -- event = { "BufEnter *.go" },
+  -- event = { "CmdlineEnter" },
+  event = { "BufEnter *.go" },
   ft = { "go", "gomod" },
   build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 }

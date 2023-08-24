@@ -3,7 +3,7 @@ local M = {}
 M.ui = {
   theme_toggle = { "palenight", "tokyonight" },
   theme = 'palenight',
-  nvdash = require("custom.configs.nvdash_conf"),
+  nvdash = require("custom.configs.nvdash"),
   -- transparency = true,
   lsp_semantic_tokens = true,
 }
