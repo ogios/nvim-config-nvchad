@@ -80,6 +80,10 @@ Mappings.newlsp = {
       end,
       "LSP rename",
     },
+    ["<A-CR>"] = {
+      "<CMD>CodeActionMenu<CR>",
+      "LSP rename",
+    },
   },
 }
 
