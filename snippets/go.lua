@@ -19,7 +19,8 @@ return {
       "type (",
       "  "
     },
-    i(2, "sLogic"),
+    t "s",
+    i (2, "Logic"),
     t " struct{}",
     t {
       "",
@@ -31,7 +32,8 @@ return {
       "func init() {",
       "  "
     },
-    i(3, "service.RegisterXXX"),
+    t "service.Register",
+    f(function(args) return args[1] end, { ai[2] }),
     t "(New())",
     t {
       "",
@@ -39,20 +41,27 @@ return {
       "",
       "",
     },
-    t "func New() service.",
-    i(4, "IXXX"),
+    t "func New() service.I",
+    f(function(args) return args[1] end, { ai[2] }),
     t " {",
     t {
       "",
       "  "
     },
-    t "return &",
+    t "return &s",
     f(function(args) return args[1] end, { ai[2] }),
     t "{}",
     t {
       "",
       "}",
       ""
+    },
+    t "func (s *s",
+    f(function (args) return args[1] end, { ai[2] }),
+    t {
+      ") Example(ctx context.Context) (err error) {",
+      "  return nil",
+      "}"
     },
   }),
 }
