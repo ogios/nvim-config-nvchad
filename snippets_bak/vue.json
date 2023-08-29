@@ -1,0 +1,11 @@
+{
+  "VUENEW": {
+    "prefix": "VUENEW",
+    "body": [
+      "<template>\n\n</template>\n\n",
+      "<script setup lang=\"ts\">\n\n</script>\n\n",
+      "<style lang=\"scss\" scoped>\n\n</style>"
+    ],
+    "description": "Create template for new .vue file"
+  }
+}

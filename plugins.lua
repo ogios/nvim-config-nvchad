@@ -84,6 +84,7 @@ local plugins = {
       require "custom.configs.null-ls"
     end,
   },
+  -- { import = "custom.configs.snippets" },
   { import = "custom.configs.plugins.nvim-dap" },
   { import = "custom.configs.plugins.nvim-dap-ui" },
   { import = "custom.configs.plugins.nvim-dap-virtual-text" },

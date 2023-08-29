@@ -37,7 +37,7 @@ local setup = function(_, opts)
 
   -- List of servers to install
   local servers =
-    { "lua_ls", "gopls", "html", "cssls", "tsserver", "jedi_language_server", "jsonls", "bashls", "prismals", "graphql", "volar" }
+    { "lua_ls", "gopls", "html", "cssls", "tsserver", "jedi_language_server", "jsonls", "bashls", "prismals", "graphql", "volar", "sqlls" }
 
   -- require("mason").setup(opts)
   require("mason").setup()
@@ -164,7 +164,8 @@ local extra = {
       "shfmt",
       -- "shellcheck",
       "vue-language-server",
-      "bash-language-server",
+      "bash-language-server",
+      "sqlls",
     },
   },
   config = function(plugin, opts)
