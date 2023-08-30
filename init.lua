@@ -1,6 +1,9 @@
+vim.o.guifont = "JetBrainsMonoNL Nerd Font Mono"
+vim.g.guifont = "JetBrainsMonoNL Nerd Font Mono"
 require("custom.vimopt")
 require("custom.keymap")
 -- require("custom.configs.go_conf")
+
 
 if vim.g.neovide then
 	require("custom.neovide")

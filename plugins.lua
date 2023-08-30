@@ -110,6 +110,7 @@ local plugins = {
   { import = "custom.configs.plugins.neorg" },
   { import = "custom.configs.plugins.vim-matchup" },
   { import = "custom.configs.plugins.code-action-menu" },
+  { import = "custom.configs.plugins.firenvim" },
   -- { import = "custom.configs.plugins.satellite" },
   -- { import = "custom.configs.tokyonight" },
 }
