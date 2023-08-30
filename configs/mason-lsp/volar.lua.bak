@@ -1,0 +1,110 @@
+local util = require "lspconfig.util"
+local utils = require "core.utils"
+
+-- local global_ts = "~/AppData/Roaming/npm/node_modules/typescript/lib"
+local function get_typescript_server_path(root_dir)
+  local found_ts = ""
+  local function check_dir(path)
+    found_ts = util.path.join(path, "node_modules", "typescript", "lib")
+    if util.path.exists(found_ts) then
+      return path
+    end
+  end
+
+  if util.search_ancestors(root_dir, check_dir) then
+    return found_ts
+  else
+    vim.notify("No typescript server path found!", vim.log.levels.ERROR)
+    return
+  end
+end
+
+return function(on_attach, capabilities)
+  -- ps: the dynamicRegistration didn't seems to work, is there something wrong?
+  capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+  capabilities.textDocument.completion.dynamicRegistration = true
+
+  require("lspconfig").volar.setup {
+    capabilities = capabilities,
+
+    on_attach = function(client, bufnr)
+      -- client.server_capabilities.documentFormattingProvider = false
+      -- client.server_capabilities.documentRangeFormattingProvider = false
+      --
+      -- utils.load_mappings("lspconfig", { buffer = bufnr })
+      --
+      -- if client.server_capabilities.signatureHelpProvider then
+      --   require("nvchad.signature").setup(client)
+      -- end
+      --
+      -- if not utils.load_config().ui.lsp_semantic_tokens and client.supports_method "textDocument/semanticTokens" then
+      --   client.server_capabilities.semanticTokensProvider = nil
+      -- end
+      pcall(function()
+        client.resolved_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+      end)
+      if client.resolved_capabilities then
+        client.resolved_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+        vim.notify "dynamicRegistration loaded for volar"
+      end
+    end,
+
+    on_new_config = function(new_config, new_root_dir)
+      new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
+      new_config.init_options.vue.autoInsert.dotValue = true
+    end,
+
+    filetypes = require("custom.configs.utils.npm_func").is_npm_package_installed "vue"
+        and { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" }
+      or { "vue" },
+
+    root_dir = require("lspconfig").util.root_pattern "package.json",
+
+    documentFeatures = {
+      documentFormatting = {
+        defaultPrintWidth = 60,
+      },
+    },
+
+    init_options = {
+      vue = {
+        server = {
+          diagnosticModel = "push"
+        },
+        autoInsert = {
+          dotValue = true,
+        },
+        updateImportsOnFileMove = {
+          enabled = true,
+        },
+      },
+      typescript = {
+        preferences = {
+          -- "relative" | "non-relative" | "auto" | "shortest"(not sure)
+          importModuleSpecifier = "non-relative",
+        },
+      },
+    },
+
+    -- ps: don't know why, these settings never works
+    settings = {
+      vue = {
+        server = {
+          diagnosticModel = "push"
+        },
+        autoInsert = {
+          dotValue = true,
+        },
+        updateImportsOnFileMove = {
+          enabled = true,
+        },
+      },
+      typescript = {
+        preferences = {
+          -- "relative" | "non-relative" | "auto" | "shortest"(not sure)
+          importModuleSpecifier = "non-relative",
+        },
+      },
+    },
+  }
+end
