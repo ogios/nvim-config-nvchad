@@ -84,6 +84,7 @@ local plugins = {
       require "custom.configs.null-ls"
     end,
   },
+  -- { import = "custom.configs.snippets" },
   { import = "custom.configs.plugins.nvim-dap" },
   { import = "custom.configs.plugins.nvim-dap-ui" },
   { import = "custom.configs.plugins.nvim-dap-virtual-text" },
@@ -108,6 +109,8 @@ local plugins = {
   { import = "custom.configs.plugins.ts-autotag" },
   { import = "custom.configs.plugins.neorg" },
   { import = "custom.configs.plugins.vim-matchup" },
+  { import = "custom.configs.plugins.code-action-menu" },
+  { import = "custom.configs.plugins.firenvim" },
   -- { import = "custom.configs.plugins.satellite" },
   -- { import = "custom.configs.tokyonight" },
 }

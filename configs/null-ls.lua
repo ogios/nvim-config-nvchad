@@ -28,6 +28,7 @@ require("mason-null-ls").setup {
     "flake8",
     "autoflake",
     "goimports",
+    "sql-formatter",
   },
   automatic_setup = true,
   handlers = {},

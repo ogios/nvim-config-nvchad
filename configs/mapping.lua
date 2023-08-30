@@ -80,6 +80,10 @@ Mappings.newlsp = {
       end,
       "LSP rename",
     },
+    ["<A-CR>"] = {
+      "<CMD>CodeActionMenu<CR>",
+      "LSP rename",
+    },
   },
 }
 
@@ -87,6 +91,10 @@ Mappings.abc = {
   n = {
     ["qw"] = {"viw", "select word in visual mode"},
     ["<leader>ms"] = {"<CMD>SymbolsOutline<CR>", "open up code structure map"},
+    ["<C-S-Up>"] = {"<CMD>resize +5<CR>", "increase window height"},
+    ["<C-S-Down>"] = {"<CMD>resize -5<CR>", "increase window height"},
+    ["<C-S-Left>"] = {"<CMD>vertical resize -5<CR>", "increase window height"},
+    ["<C-S-Right>"] = {"<CMD>vertical resize +5<CR>", "increase window height"},
   }
 }
 return Mappings
