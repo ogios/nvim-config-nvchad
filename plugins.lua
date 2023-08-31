@@ -2,15 +2,32 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     event = { "VeryLazy", "BufRead" },
-    config = function()
-      -- require "plugins.configs.lspconfig"
-      -- require "custom.configs.lspconfig"
-    end,
-    dependencies = {
-      require "custom.configs.mason-extra",
-      "williamboman/mason-lspconfig",
-    },
+    -- config = function()
+    --   -- require "plugins.configs.lspconfig"
+    --   -- require "custom.configs.lspconfig"
+    -- end,
+    -- dependencies = {
+    --   require "custom.configs.mason-extra",
+    --   "williamboman/mason-lspconfig",
+    -- },
   },
+  {
+    "folke/neoconf.nvim",
+    lazy = false,
+    config = function()
+      require("neoconf").setup({})
+    end,
+    priority = 1000
+  },
+  {
+    "folke/neodev.nvim",
+    lazy = false,
+    config = function()
+      require("neodev").setup({})
+    end,
+    priority = 999
+  },
+  { import = "custom.configs.mason-extra" },
   {
     "nvim-tree/nvim-tree.lua",
     opts = {

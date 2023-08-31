@@ -10,3 +10,4 @@ opt.relativenumber = true
 
 -- 复制与系统
 opt.clipboard:append("unnamedplus")
+
