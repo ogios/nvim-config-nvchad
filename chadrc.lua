@@ -1,8 +1,8 @@
 --@type ChadrcConfig 
 local M = {}
 M.ui = {
-  theme_toggle = { "bearded-arc", "tokyonight" },
-  theme = 'bearded-arc',
+  theme_toggle = { "catppuccin", "tokyonight" },
+  theme = 'catppuccin',
   nvdash = require("custom.configs.nvdash"),
   -- transparency = true,
   lsp_semantic_tokens = true,

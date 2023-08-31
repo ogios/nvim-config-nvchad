@@ -65,7 +65,7 @@ end
 
 return function(on_attach, capabilities)
   -- ps: the dynamicRegistration didn't seems to work, is there something wrong?
-  capabilities = changeWorkspaveCapa(capabilities)
+  capabilities = changeWorkspaveCapa(require("custom.configs.utils.deepcopy")(capabilities))
 
   require("lspconfig").volar.setup {
     capabilities = capabilities,

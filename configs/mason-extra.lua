@@ -1,7 +1,4 @@
 local setup = function(_, opts)
-  -- require("mason").setup(opts)
-  -- require("neoconf").setup {}
-  -- require("neodev").setup {}
   require("mason").setup()
   local is_disabled = function(client)
     return require("neoconf").get(client .. ".disable")
@@ -20,13 +17,14 @@ local setup = function(_, opts)
     "html",
     "cssls",
     "tsserver",
-    "jedi_language_server",
+    -- "jedi_language_server",
     "jsonls",
     "bashls",
     "prismals",
     "graphql",
     "volar",
     "sqlls",
+    "pyright",
   }
 
   require("mason-lspconfig").setup {
@@ -75,8 +73,9 @@ local extra = {
     ensure_installed = {
       -- "sourcery",
       -- "python-lsp-server",
-      "jedi-language-server",
+      -- "jedi-language-server",
       -- "diagnostic-languageserver",
+      "pyright",
       "autoflake",
       "lua-language-server",
       "prettier",
