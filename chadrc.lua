@@ -6,6 +6,10 @@ M.ui = {
   nvdash = require("custom.configs.nvdash"),
   -- transparency = true,
   lsp_semantic_tokens = true,
+
+
+
+  telescope = { style = "bordered" }, -- borderless / bordered
 }
 M.plugins = 'custom.plugins'
 M.mappings = {}
