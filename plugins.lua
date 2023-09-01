@@ -47,9 +47,6 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    -- dependencies = {
-    --   require "custom.configs.plugins.ts-autotag",
-    -- },
     opts = {
 
       highlight = {
@@ -72,7 +69,6 @@ local plugins = {
         "vue",
         -- "svelte",
 
-        -- low level
         "python",
         "java",
         "go",
@@ -80,12 +76,6 @@ local plugins = {
       indent = {
         enable = true,
       },
-      -- autotag = {
-      --   enable = true,
-      --   enable_rename = true,
-      --   enable_close = true,
-      --   enable_close_on_slash = true,
-      -- },
     },
   },
   {
@@ -102,6 +92,7 @@ local plugins = {
     end,
   },
   -- { import = "custom.configs.snippets" },
+  { import = "custom.configs.plugins.nvterm" },
   { import = "custom.configs.plugins.nvim-dap" },
   { import = "custom.configs.plugins.nvim-dap-ui" },
   { import = "custom.configs.plugins.nvim-dap-virtual-text" },
