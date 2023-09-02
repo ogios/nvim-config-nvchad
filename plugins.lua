@@ -85,9 +85,7 @@ local plugins = {
       "williamboman/mason.nvim",
       "jose-elias-alvarez/null-ls.nvim",
     },
-    -- lazy = false,
     config = function()
-      -- require "custom.configs.null-ls" -- require your null-ls config here (example below)
       require "custom.configs.null-ls"
     end,
   },

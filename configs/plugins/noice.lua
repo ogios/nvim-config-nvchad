@@ -22,6 +22,9 @@ end
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
+  keys = {
+    { "<leader>nc", "<CMD>Noice dismiss<CR>", "clear all noice notify" }
+  },
   opts = {
     -- add any options here
   },
@@ -29,11 +32,7 @@ return {
     setup()
   end,
   dependencies = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
     "MunifTanjim/nui.nvim",
-    -- OPTIONAL:
-    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --   If not available, we use `mini` as the fallback
     "rcarriga/nvim-notify",
   },
 }
