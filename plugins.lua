@@ -11,90 +11,16 @@ local plugins = {
     --   "williamboman/mason-lspconfig",
     -- },
   },
-  {
-    "folke/neoconf.nvim",
-    lazy = false,
-    config = function()
-      require("neoconf").setup({})
-    end,
-    priority = 1000
-  },
-  {
-    "folke/neodev.nvim",
-    lazy = false,
-    config = function()
-      require("neodev").setup({})
-    end,
-    priority = 999
-  },
+  { import = "custom.configs.plugins.neoconf" },
+  { import = "custom.configs.plugins.neodev" },
   { import = "custom.configs.mason-extra" },
-  {
-    "nvim-tree/nvim-tree.lua",
-    opts = {
-      -- git = {
-      --   enable = true,
-      -- },
-
-      renderer = {
-        highlight_git = true,
-        icons = {
-          show = {
-            git = true,
-          },
-        },
-      },
-    },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-
-      highlight = {
-        enable = true,
-        use_languagetree = true,
-      },
-
-      ensure_installed = {
-        -- defaults
-        "vim",
-        "lua",
-
-        -- web dev
-        "html",
-        "css",
-        "javascript",
-        "typescript",
-        "tsx",
-        "json",
-        "vue",
-        -- "svelte",
-
-        "python",
-        "java",
-        "go",
-      },
-      indent = {
-        enable = true,
-      },
-    },
-  },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-    },
-    config = function()
-      require "custom.configs.null-ls"
-    end,
-  },
-  -- { import = "custom.configs.snippets" },
+  { import = "custom.configs.plugins.nvim-tree" },
+  { import = "custom.configs.plugins.nvim-treesitter" },
+  { import = "custom.configs.plugins.mason-null-ls" },
   { import = "custom.configs.plugins.nvterm" },
   { import = "custom.configs.plugins.nvim-dap" },
   { import = "custom.configs.plugins.nvim-dap-ui" },
   { import = "custom.configs.plugins.nvim-dap-virtual-text" },
-  { import = "custom.configs.plugins.toggleterm" },
   { import = "custom.configs.plugins.go" },
   {
     "equalsraf/neovim-gui-shim",
@@ -117,6 +43,7 @@ local plugins = {
   { import = "custom.configs.plugins.vim-matchup" },
   { import = "custom.configs.plugins.code-action-menu" },
   { import = "custom.configs.plugins.firenvim" },
+  { import = "custom.configs.plugins.markdown-preview" },
   -- { import = "custom.configs.plugins.satellite" },
   -- { import = "custom.configs.tokyonight" },
 }
