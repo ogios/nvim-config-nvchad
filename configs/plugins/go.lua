@@ -25,8 +25,8 @@ local setup =  function()
     comment_placeholder = "", -- comment_placeholder your cool placeholder e.g. ﳑ       
     icons = { breakpoint = "🧘", currentpos = "🏃" }, -- setup to `false` to disable icons setup
     -- icons = false,
-    verbose = true, -- output loginf in messages
-    log_path = "~/log/gonvim.log",
+    -- verbose = true, -- output loginf in messages
+    -- log_path = "~/log/gonvim.log",
     -- lsp_cfg = {
     --         capabilities = capabilities,
     -- }, -- true: use non-default gopls setup specified in go/lsp.lua

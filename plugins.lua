@@ -11,6 +11,16 @@ local plugins = {
     --   "williamboman/mason-lspconfig",
     -- },
   },
+  {
+    "echasnovski/mini.cursorword",
+    version = false,
+    event = { "VeryLazy" },
+    config = function ()
+      require("mini.cursorword").setup({
+        delay = 50,
+      })
+    end
+  },
   { import = "custom.configs.plugins.neoconf" },
   { import = "custom.configs.plugins.neodev" },
   { import = "custom.configs.mason-extra" },
