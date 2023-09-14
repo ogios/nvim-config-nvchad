@@ -25,6 +25,8 @@ local setup = function(_, opts)
     "volar",
     "sqlls",
     "pyright",
+    -- "bufls"
+    "powershell_es",
   }
 
   require("mason-lspconfig").setup {
@@ -41,7 +43,7 @@ local setup = function(_, opts)
         -- on_attach = on_attach,
         on_attach = function(client, bufnr)
           on_attach(client, bufnr)
-          require("custom.configs.mason-lsp.config").lsp_highlight(client, bufnr)
+          -- require("custom.configs.mason-lsp.config").lsp_highlight(client, bufnr)
         end,
         capabilities = capabilities,
       }

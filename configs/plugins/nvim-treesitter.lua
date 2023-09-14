@@ -26,6 +26,8 @@ return {
       "python",
       "java",
       "go",
+      "jsonc",
+      "regex",
     },
     indent = {
       enable = true,

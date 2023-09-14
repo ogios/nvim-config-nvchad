@@ -56,7 +56,7 @@ Mappings.newlsp = {
       end,
       "LSP definition",
     },
-    ["<leader>lK"] = {
+    ["K"] = {
       function()
         vim.lsp.buf.hover()
       end,
