@@ -21,6 +21,7 @@ local plugins = {
       })
     end
   },
+  { import = "custom.configs.plugins.cmp" },
   { import = "custom.configs.plugins.neoconf" },
   { import = "custom.configs.plugins.neodev" },
   { import = "custom.configs.mason-extra" },
@@ -55,6 +56,9 @@ local plugins = {
   { import = "custom.configs.plugins.firenvim" },
   { import = "custom.configs.plugins.markdown-preview" },
   { import = "custom.configs.plugins.lazygit" },
+  { import = "custom.configs.plugins.code_runner" },
+  { import = "custom.configs.plugins.persistence" },
+  { import = "custom.configs.plugins.workspaces" },
   -- { import = "custom.configs.plugins.satellite" },
   -- { import = "custom.configs.tokyonight" },
 }
