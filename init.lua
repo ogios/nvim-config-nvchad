@@ -5,6 +5,7 @@ require("custom.keymap")
 -- require("custom.configs.go_conf")
 
 
+require("custom.neovide")
 if vim.g.neovide then
 	require("custom.neovide")
 end
