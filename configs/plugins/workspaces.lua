@@ -46,7 +46,7 @@ return {
   "natecraddock/workspaces.nvim",
   event = { "VeryLazy" },
   keys = {
-    { "<leader>wp", "<CMD>TeleScope workspaces<CR>", desc="TeleScope workspaces" }
+    { "<leader>wp", "<CMD>Telescope workspaces<CR>", desc="TeleScope workspaces" }
   },
   config = function()
     setup()
