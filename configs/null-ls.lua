@@ -32,6 +32,8 @@ require("mason-null-ls").setup {
     "black",
     "goimports",
     "sql-formatter",
+    "buf",
+    "powershell_es",
   },
   automatic_setup = true,
   handlers = {},

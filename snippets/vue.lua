@@ -26,4 +26,7 @@ return {
       "</style>"
     },
   }),
+  s("space", {
+    t "&nbsp;"
+  })
 }

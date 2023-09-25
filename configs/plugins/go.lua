@@ -1,4 +1,4 @@
-local setup =  function()
+local setup = function()
   local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
   vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*.go",
@@ -25,7 +25,6 @@ local setup =  function()
     comment_placeholder = "", -- comment_placeholder your cool placeholder e.g. ﳑ       
     icons = { breakpoint = "🧘", currentpos = "🏃" }, -- setup to `false` to disable icons setup
     -- icons = false,
-    verbose = false, -- output loginf in messages
     -- verbose = true, -- output loginf in messages
     -- log_path = "~/log/gonvim.log",
     -- lsp_cfg = {
@@ -103,24 +102,33 @@ local setup =  function()
   }
 end
 
-
-
-
-
-
+local function GoRunWithArgs()
+  local args = require("neoconf").get("GoRun.args", "")
+  local cmd = "GoRun " .. args .. " -F"
+  vim.cmd(cmd)
+end
 
 return {
   "ray-x/go.nvim",
+  event = { "BufEnter *.go" },
+  ft = { "go", "gomod" },
+  build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+  keys = {
+    -- { "<leader>gr", "<CMD>GoRun -F<CR>", desc="Run Go Project" }
+    {
+      "<leader>gr",
+      function()
+        GoRunWithArgs()
+      end,
+      desc = "Run Go Project",
+    },
+  },
+  config = function()
+    setup()
+  end,
   dependencies = { -- optional packages
     "ray-x/guihua.lua",
     "neovim/nvim-lspconfig",
     "nvim-treesitter/nvim-treesitter",
   },
-  config = function ()
-    setup()
-  end,
-  -- event = { "CmdlineEnter" },
-  event = { "BufEnter *.go" },
-  ft = { "go", "gomod" },
-  build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 }

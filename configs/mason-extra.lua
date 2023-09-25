@@ -25,6 +25,8 @@ local setup = function(_, opts)
     "volar",
     "sqlls",
     "pyright",
+    -- "bufls"
+    "powershell_es",
   }
 
   require("mason-lspconfig").setup {
@@ -38,12 +40,11 @@ local setup = function(_, opts)
         return
       end
       lspconfig[server_name].setup {
-        on_attach = on_attach,
-        -- on_attach = function(client, bufnr)
-        --   on_attach(client, bufnr)
-        --   -- Add your other things here
-        --   -- Example being format on save or something
-        -- end,
+        -- on_attach = on_attach,
+        on_attach = function(client, bufnr)
+          on_attach(client, bufnr)
+          -- require("custom.configs.mason-lsp.config").lsp_highlight(client, bufnr)
+        end,
         capabilities = capabilities,
       }
     end,
@@ -66,7 +67,7 @@ local extra = {
     "hrsh7th/cmp-nvim-lsp",
     "pmizio/typescript-tools.nvim",
   },
-  event = {"VeryLazy"},
+  event = { "VeryLazy" },
 
   -- lazy = false,
   opts = {
