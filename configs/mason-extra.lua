@@ -27,6 +27,7 @@ local setup = function(_, opts)
     "pyright",
     -- "bufls"
     "powershell_es",
+    "jdtls",
   }
 
   require("mason-lspconfig").setup {
@@ -94,6 +95,7 @@ local extra = {
       "vue-language-server",
       "bash-language-server",
       "sqlls",
+      "jdtls",
     },
   },
   config = function(plugin, opts)
