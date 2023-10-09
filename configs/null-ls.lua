@@ -34,6 +34,7 @@ require("mason-null-ls").setup {
     "sql-formatter",
     "buf",
     "powershell_es",
+    "google-java-format",
   },
   automatic_setup = true,
   handlers = {},

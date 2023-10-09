@@ -28,6 +28,9 @@ local setup = function(_, opts)
     -- "bufls"
     "powershell_es",
     "jdtls",
+    "gradle_ls",
+    "grammarly",
+    -- "kotlin_language_server",
   }
 
   require("mason-lspconfig").setup {
