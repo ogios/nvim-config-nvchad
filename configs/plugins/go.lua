@@ -108,9 +108,12 @@ end
 
 local function GoRunWithArgs()
   local args = require("neoconf").get("go.run.args", {})
-  local cmd = "GoRun . -F -a "
-  for key, val in pairs(args) do
-    cmd = cmd .. key .. "\\ " .. val .. "\\ "
+  local cmd = "GoRun . -F "
+  if next(args) ~= nil then
+    cmd = cmd .. "-a "
+    for key, val in pairs(args) do
+      cmd = cmd .. key .. "\\ " .. val .. "\\ "
+    end
   end
   vim.notify(cmd)
   vim.cmd(cmd)

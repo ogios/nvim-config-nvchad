@@ -102,4 +102,27 @@ Mappings.abc = {
     ["<C-S-Right>"] = { "<CMD>vertical resize +5<CR>", "increase window height" },
   },
 }
+
+Mappings.tabop = {
+  i = {
+    ["<A-=>"] = {"<CMD>tabnew<CR>", "create new tab"},
+    ["<A-->"] = {"<CMD>tabclose<CR>", "close current tab"},
+    ["<A-Left>"] = {"<CMD>tabpre<CR>", "tab left(previous)"},
+    ["<A-Right>"] = {"<CMD>tabnext<CR>", "tab right(next)"},
+  },
+  v = {
+    ["<A-=>"] = {"<CMD>tabnew<CR>", "create new tab"},
+    ["<A-->"] = {"<CMD>tabclose<CR>", "close current tab"},
+    ["<A-Left>"] = {"<CMD>tabpre<CR>", "tab left(previous)"},
+    ["<A-Right>"] = {"<CMD>tabnext<CR>", "tab right(next)"},
+  },
+  n = {
+    ["<A-=>"] = {"<CMD>tabnew<CR>", "create new tab"},
+    ["<A-->"] = {"<CMD>tabclose<CR>", "close current tab"},
+    ["<A-Left>"] = {"<CMD>tabpre<CR>", "tab left(previous)"},
+    ["<A-Right>"] = {"<CMD>tabnext<CR>", "tab right(next)"},
+  }
+}
+
+
 return Mappings
