@@ -1,13 +1,7 @@
-local setup = function()
-  local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.go",
-    callback = function()
-      require("go.format").goimport()
-    end,
-    group = format_sync_grp,
-  })
 
+local setup = function()
+
+  -- setup go.nvim
   require("go").setup {
     -- NOTE: all LSP and formatting related options are disabeld.
     -- NOTE: LSP is handled by lsp.lua and formatting is handled by null-ls.lua
@@ -26,7 +20,7 @@ local setup = function()
     icons = { breakpoint = "🧘", currentpos = "🏃" }, -- setup to `false` to disable icons setup
     -- icons = false,
     -- verbose = true, -- output loginf in messages
-    -- log_path = "~/log/gonvim.log",
+    -- log_path = "/home/ogios/log/gonvim.log",
     -- lsp_cfg = {
     --         capabilities = capabilities,
     -- }, -- true: use non-default gopls setup specified in go/lsp.lua
@@ -100,11 +94,25 @@ local setup = function()
       height = 0.6, -- height of float window if not auto
     },
   }
+
+  -- auto format
+  local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+      require("go.format").goimport()
+    end,
+    group = format_sync_grp,
+  })
 end
 
 local function GoRunWithArgs()
-  local args = require("neoconf").get("GoRun.args", "")
-  local cmd = "GoRun " .. args .. " -F"
+  local args = require("neoconf").get("go.run.args", {})
+  local cmd = "GoRun . -F -a "
+  for key, val in pairs(args) do
+    cmd = cmd .. key .. "\\ " .. val .. "\\ "
+  end
+  vim.notify(cmd)
   vim.cmd(cmd)
 end
 
@@ -114,12 +122,9 @@ return {
   ft = { "go", "gomod" },
   build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   keys = {
-    -- { "<leader>gr", "<CMD>GoRun -F<CR>", desc="Run Go Project" }
     {
       "<leader>gr",
-      function()
-        GoRunWithArgs()
-      end,
+      GoRunWithArgs,
       desc = "Run Go Project",
     },
   },
