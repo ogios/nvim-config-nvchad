@@ -18,12 +18,10 @@ local M = {
     return require("neoconf").get(client .. ".disable")
   end,
 
-  run_command = function(command)
-    vim.cmd(":w")
-    local bufname = pattern .. vim.fn.expand("%:t:r")
-    local set_bufname = "file " .. bufname
+  run_command = function(command, name)
+    local set_bufname = "file " .. name
     local prefix = "bot 12 new"
-    closeRunner(bufname)
+    closeRunner(name)
     vim.cmd(prefix)
     vim.fn.termopen(command)
     vim.cmd("norm G")

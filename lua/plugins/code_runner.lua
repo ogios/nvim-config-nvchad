@@ -4,16 +4,29 @@ return {
     keys = {
       -- { "<leader><leader>r", [[<CMD>RunCode<CR>]], desc="Run code" }
       {
-        "<leader><leader>r",
+        "<leader>rr",
         function()
-          local command = require("neoconf").get("runner", nil)
-          if command == "" or command == nil then
-            vim.cmd("RunCode")
-          else
-            require("util.util").run_command(command)
-          end
+          vim.cmd("RunCode")
         end,
         desc = "Run code",
+      },
+      {
+        "<leader>rc",
+        function()
+          local runner = require("neoconf").get("runner", nil)
+          if runner == nil then
+            require("lazyvim.util").error("no runner defined in neocon")
+          else
+            local command = runner["command"]
+            local name = runner["name"]
+            if command == "" or name == "" or command == nil or name == nil then
+              require("lazyvim.util").error("missing runner property: " .. vim.inspect(runner))
+            else
+              require("util.util").run_command(runner["command"], runner["name"])
+            end
+          end
+        end,
+        "Run Code in neoconf",
       },
     },
     event = { "VeryLazy" },
