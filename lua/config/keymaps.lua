@@ -2,12 +2,41 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-local D = {}
+local D = {
+  n = {
+    "<leader>/",
+    "<M-\\>",
+    "<c-/>",
+  },
 
+  t = {
+    "<M-\\>",
+    "<C-/>",
+  },
+}
+
+-- delete keymap
+for mode, modeval in pairs(D) do
+  for _, val in pairs(modeval) do
+    pcall(function()
+      vim.keymap.del(mode, val, { clear = true })
+    end)
+  end
+end
+
+local Util = require("lazyvim.util")
+local lazyterm = function()
+  Util.terminal(nil, { cwd = Util.root() })
+end
 local M = {
   x = {
     ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text" },
   },
+
+  t = {
+    ["<M-\\>"] = { "<cmd>close<cr>", "Close terminal (root dir)" },
+  },
+
   i = {
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
@@ -22,6 +51,7 @@ local M = {
   },
 
   n = {
+    ["<M-\\>"] = { lazyterm, "Terminal (root dir)" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
     ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
 
@@ -125,6 +155,6 @@ local M = {
 -- set keymap
 for mode, modeval in pairs(M) do
   for key, val in pairs(modeval) do
-    vim.keymap.set(mode, key, val[1], { desc = val[2] })
+    vim.keymap.set(mode, key, val[1], { desc = val[2], remap = true })
   end
 end
