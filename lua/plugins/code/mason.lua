@@ -5,25 +5,31 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
-        -- pyright will be automatically installed with mason and loaded with lspconfig
-        pyright = {},
-        ansiblels = {},
-        bashls = {},
-        clangd = {},
-        -- denols = {},
-        cssls = {},
-        dockerls = {},
         tailwindcss = {
           root_dir = function(...)
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
         },
+        powershell_es = {
+          settings = {
+            powershell = {
+              codeFormatting = {
+                Preset = "OTBS",
+              },
+            },
+          },
+        },
+        pyright = {},
+        ansiblels = {},
+        bashls = {},
+        clangd = {},
+        cssls = {},
+        dockerls = {},
         html = {},
         gopls = {},
         marksman = {},
         volar = {},
         sqlls = {},
-        powershell_es = {},
         jdtls = {},
         gradle_ls = {},
       },
