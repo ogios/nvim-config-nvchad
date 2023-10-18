@@ -29,17 +29,20 @@ return {
       },
       setup = {
         eslint = function(server, opts)
-          if require("util.util").is_disabled(server) then
+          local disabled = require("util.util").is_disabled(server)
+          if disabled then
             return true
           end
         end,
         tailwindcss = function(server, opts)
-          if require("util.util").is_disabled(server) then
+          local disabled = require("util.util").is_disabled(server)
+          if disabled then
             return true
           end
         end,
         tsserver = function(server, opts)
-          if require("util.util").is_disabled(server) then
+          local disabled = require("util.util").is_disabled(server)
+          if disabled then
             return true
           end
           -- require("typescript").setup({ server = opts })
@@ -50,6 +53,7 @@ return {
   },
 
   { import = "plugins.code.lang.go" },
+  { import = "plugins.code.lang.vue" },
 
   {
     "nvimtools/none-ls.nvim",
