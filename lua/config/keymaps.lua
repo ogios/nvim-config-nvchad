@@ -118,7 +118,7 @@ local M = {
     ["<C-S-Right>"] = { "<CMD>vertical resize +5<CR>", "increase window height" },
 
     -- buffer
-    ["<leader>d"] = {
+    ["<leader>dq"] = {
       function()
         local bd = require("mini.bufremove").delete
         if vim.bo.modified then
@@ -135,7 +135,7 @@ local M = {
       end,
       "Delete Buffer",
     },
-    ["<leader>D"] = {
+    ["<leader>Dq"] = {
       function()
         require("mini.bufremove").delete(0, true)
       end,
