@@ -22,7 +22,7 @@ return {
   build = "cargo install --locked code-minimap",
   cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight" },
   keys = {
-    { "<leader>mm", "<CMD>MinimapToggle<CR>", desc="Toggle Minimap" }
+    { "<leader>mm", "<CMD>MinimapToggle<CR>", desc = "Toggle Minimap" },
   },
   config = function()
     vim.g.minimap_width = 10
