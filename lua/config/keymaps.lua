@@ -33,6 +33,10 @@ local M = {
     ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text" },
   },
 
+  v = {
+    ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text" },
+  },
+
   t = {
     ["<M-\\>"] = { "<cmd>close<cr>", "Close terminal (root dir)" },
   },
