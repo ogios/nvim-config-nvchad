@@ -59,6 +59,7 @@ return {
       servers = {
         ---@type lspconfig.options.volar
         volar = {
+          vueserver = { useSecondServer = true },
           filetypes = require("util.npm_func").is_npm_package_installed("vue")
               and { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" }
             or { "vue" },
