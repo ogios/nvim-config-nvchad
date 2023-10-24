@@ -1,5 +1,5 @@
 return {
-  { import = "lazyvim.plugins.extras.coding.tabnine" },
+  -- { import = "lazyvim.plugins.extras.coding.tabnine" },
   { import = "lazyvim.plugins.extras.editor.navic" },
   { import = "lazyvim.plugins.extras.ui.edgy" },
   { import = "lazyvim.plugins.extras.editor.symbols-outline" },
