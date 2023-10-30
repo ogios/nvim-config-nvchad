@@ -4,6 +4,20 @@ return {
   { import = "lazyvim.plugins.extras.ui.edgy" },
   { import = "lazyvim.plugins.extras.editor.symbols-outline" },
 
+  -- diffview
+  {
+    "sindrets/diffview.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFileHistory" },
+    config = function()
+      require("diffview").setup({})
+    end,
+    keys = {
+      { "<leader>dvo", "<cmd>DiffviewOpen<cr>", desc = "Diffview" },
+      { "<leader>dvc", "<cmd>DiffviewClose<cr>", desc = "Diffview" },
+    },
+  },
+
   -- edgy integration
   {
     "folke/edgy.nvim",
@@ -67,8 +81,8 @@ return {
       opts.hooks.pre = function()
         require("ts_context_commentstring.internal").update_commentstring()
       end
-      opts.mappings.comment = "<c-/>"
-      opts.mappings.comment_line = "<c-/><c-/>"
+      -- opts.mappings.comment = "<c-/>"
+      -- opts.mappings.comment_line = "<c-/><c-/>"
       -- opts.mappings.textobject = "<leader>//"
     end,
   },
