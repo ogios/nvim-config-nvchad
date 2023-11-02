@@ -4,6 +4,14 @@ return {
   { import = "lazyvim.plugins.extras.ui.edgy" },
   { import = "lazyvim.plugins.extras.editor.symbols-outline" },
 
+  -- color
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+  },
+
   -- diffview
   {
     "sindrets/diffview.nvim",
