@@ -4,28 +4,6 @@ return {
   { import = "lazyvim.plugins.extras.ui.edgy" },
   { import = "lazyvim.plugins.extras.editor.symbols-outline" },
 
-  -- color
-  {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup()
-    end,
-  },
-
-  -- diffview
-  {
-    "sindrets/diffview.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFileHistory" },
-    config = function()
-      require("diffview").setup({})
-    end,
-    keys = {
-      { "<leader>dvo", "<cmd>DiffviewOpen<cr>", desc = "Diffview" },
-      { "<leader>dvc", "<cmd>DiffviewClose<cr>", desc = "Diffview" },
-    },
-  },
-
   -- edgy integration
   {
     "folke/edgy.nvim",

@@ -6,7 +6,7 @@ return {
     {
       "<leader>ng",
       function()
-        require("neogen").generate {}
+        require("neogen").generate({})
       end,
       desc = "Neogen Comment",
     },

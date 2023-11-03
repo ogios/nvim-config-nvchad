@@ -1,3 +1,4 @@
+-- make telescope grep hidden file
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {

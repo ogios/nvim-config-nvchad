@@ -60,6 +60,7 @@ return {
 
   { import = "plugins.code.lang.go" },
   { import = "plugins.code.lang.vue" },
+  { import = "plugins.code.lang.sql" },
 
   {
     "nvimtools/none-ls.nvim",

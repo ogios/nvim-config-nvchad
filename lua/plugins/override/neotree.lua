@@ -1,3 +1,4 @@
+-- neo-tree sow hidden file and use `o` keymap
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
