@@ -10,6 +10,7 @@ return {
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
         },
+        unocss = {},
         powershell_es = {
           settings = {
             powershell = {
