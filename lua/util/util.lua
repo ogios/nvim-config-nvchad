@@ -30,6 +30,24 @@ local M = {
     vim.cmd(set_bufname)
     vim.bo.buflisted = false
   end,
+
+  root_dir_setting = function(server, ...)
+    local ret_func
+    local root_dir = require("neoconf").get(server .. ".root_dir", nil)
+    if root_dir then
+      require("lazyvim.util").info(server .. ": get server from neoconf")
+      ret_func = function()
+        return root_dir
+      end
+    else
+      local temp = require("lspconfig.util").root_pattern(...)
+      ret_func = function(name, _)
+        require("lazyvim.util").info(server .. ": " .. temp(name))
+        return temp(name)
+      end
+    end
+    return ret_func
+  end,
 }
 
 return M

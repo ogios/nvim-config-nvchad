@@ -1,43 +1,43 @@
-local util = require("lspconfig.util")
+-- local util = require("lspconfig.util")
 
--- local global_ts = "~/AppData/Roaming/npm/node_modules/typescript/lib"
-local function get_typescript_server_path(root_dir)
-  local found_ts = ""
-  local function check_dir(path)
-    found_ts = util.path.join(path, "node_modules", "typescript", "lib")
-    if util.path.exists(found_ts) then
-      return path
-    end
-  end
-
-  if util.search_ancestors(root_dir, check_dir) then
-    return found_ts
-  else
-    vim.notify("No typescript server path found!", vim.log.levels.ERROR)
-    return
-  end
-end
-
-local changeWorkspaveCapa = function(capabilities)
-  local params = {
-    "fileOperations",
-    "didCreate",
-    "didRename",
-    "didDelete",
-    "didChangeWorkspaceFolders",
-    "didChangeWatchedFiles",
-    "symbol",
-  }
-  for _, v in ipairs(params) do
-    if capabilities.workspace[v] == nil then
-      capabilities.workspace[v] = {}
-    end
-    capabilities.workspace[v].dynamicRegistration = true
-    capabilities.workspace.fileOperations[v] = true
-  end
-  return capabilities
-  -- return changeCapa(capabilities)
-end
+-- -- local global_ts = "~/AppData/Roaming/npm/node_modules/typescript/lib"
+-- local function get_typescript_server_path(root_dir)
+--   local found_ts = ""
+--   local function check_dir(path)
+--     found_ts = util.path.join(path, "node_modules", "typescript", "lib")
+--     if util.path.exists(found_ts) then
+--       return path
+--     end
+--   end
+--
+--   if util.search_ancestors(root_dir, check_dir) then
+--     return found_ts
+--   else
+--     vim.notify("No typescript server path found!", vim.log.levels.ERROR)
+--     return
+--   end
+-- end
+--
+-- local changeWorkspaveCapa = function(capabilities)
+--   local params = {
+--     "fileOperations",
+--     "didCreate",
+--     "didRename",
+--     "didDelete",
+--     "didChangeWorkspaceFolders",
+--     "didChangeWatchedFiles",
+--     "symbol",
+--   }
+--   for _, v in ipairs(params) do
+--     if capabilities.workspace[v] == nil then
+--       capabilities.workspace[v] = {}
+--     end
+--     capabilities.workspace[v].dynamicRegistration = true
+--     capabilities.workspace.fileOperations[v] = true
+--   end
+--   return capabilities
+--   -- return changeCapa(capabilities)
+-- end
 
 -- return
 return {
@@ -64,6 +64,7 @@ return {
               and { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" }
             or { "vue" },
           single_file_support = false,
+
           settings = {
             typescript = {
               preferences = {
@@ -97,20 +98,6 @@ return {
           --   new_config.init_options.vue.autoInsert.dotValue = true
           -- end,
         },
-      },
-      setup = {
-        volar = function(server, opts)
-          local disabled = require("util.util").is_disabled(server)
-          if disabled then
-            return true
-          end
-          -- require("lazyvim.util").lsp.on_attach(function(client, buffer)
-          --   if client.name == "volar" then
-          --     client.server_capabilities = changeWorkspaveCapa(client.server_capabilities)
-          --     client.config.capabilities = changeWorkspaveCapa(client.config.capabilities)
-          --   end
-          -- end)
-        end,
       },
     },
   },

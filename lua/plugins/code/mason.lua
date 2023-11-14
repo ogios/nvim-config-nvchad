@@ -3,6 +3,9 @@ return {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
+      inlay_hints = {
+        enabled = true,
+      },
       ---@type lspconfig.options
       servers = {
         tailwindcss = {
@@ -34,29 +37,55 @@ return {
         jdtls = {},
         gradle_ls = {},
       },
+
       setup = {
-        eslint = function(server, opts)
+        --
+        ["*"] = function(server, opts)
           local disabled = require("util.util").is_disabled(server)
           if disabled then
             return true
           end
+
+          opts.root_dir = require("util.util").root_dir_setting(server, ".git")
         end,
-        tailwindcss = function(server, opts)
-          local disabled = require("util.util").is_disabled(server)
-          if disabled then
-            return true
-          end
-        end,
-        tsserver = function(server, opts)
-          local disabled = require("util.util").is_disabled(server)
-          if disabled then
-            return true
-          end
-          -- require("typescript").setup({ server = opts })
-          -- return true
-        end,
+        --   eslint = function(server, opts)
+        --     local disabled = require("util.util").is_disabled(server)
+        --     if disabled then
+        --       return true
+        --     end
+        --   end,
+        --   tailwindcss = function(server, opts)
+        --     local disabled = require("util.util").is_disabled(server)
+        --     if disabled then
+        --       return true
+        --     end
+        --   end,
+        --   tsserver = function(server, opts)
+        --     local disabled = require("util.util").is_disabled(server)
+        --     if disabled then
+        --       return true
+        --     end
+        --     -- require("typescript").setup({ server = opts })
+        --     -- return true
+        --   end,
       },
     },
+    -- config = function(a, b)
+    --   -- require("lazyvim.util").info(vim.inspect(a))
+    --   local servers = b.servers
+    --   for key, _ in pairs(servers) do
+    --     local setup_func = b.setup[key] or function(...) end
+    --     b.setup[key] = function(server, opts)
+    --       local disabled = require("util.util").is_disabled(server)
+    --       if disabled then
+    --         return true
+    --       end
+    --
+    --       return setup_func(server, opts)
+    --     end
+    --   end
+    --   require("lazyvim.util").info(vim.inspect(b))
+    -- end,
   },
 
   { import = "plugins.code.lang.go" },
