@@ -2,7 +2,7 @@ return {
   "lmburns/lf.nvim",
   dependencies = { "akinsho/toggleterm.nvim" },
   keys = {
-    { "n", "<M-o>", "<Cmd>Lf<CR>", "Use lf" },
+    { "<M-o>", "<Cmd>Lf<CR>", desc = "Use lf" },
   },
   config = function()
     -- This feature will not work if the plugin is lazy-loaded
