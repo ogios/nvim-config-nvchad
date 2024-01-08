@@ -1,22 +1,24 @@
--- local util = require("lspconfig.util")
+local util = require("lspconfig.util")
 
 -- -- local global_ts = "~/AppData/Roaming/npm/node_modules/typescript/lib"
--- local function get_typescript_server_path(root_dir)
---   local found_ts = ""
---   local function check_dir(path)
---     found_ts = util.path.join(path, "node_modules", "typescript", "lib")
---     if util.path.exists(found_ts) then
---       return path
---     end
---   end
---
---   if util.search_ancestors(root_dir, check_dir) then
---     return found_ts
---   else
---     vim.notify("No typescript server path found!", vim.log.levels.ERROR)
---     return
---   end
--- end
+local function get_typescript_server_path(root_dir)
+  require("lazyvim.util").info(root_dir)
+  local found_ts = ""
+  local function check_dir(path)
+    found_ts = util.path.join(path, "node_modules", "typescript", "lib")
+    if util.path.exists(found_ts) then
+      return path
+    end
+  end
+
+  if util.search_ancestors(root_dir, check_dir) then
+    return found_ts
+  else
+    require("lazyvim.util").error("No typescript server path found!")
+    -- vim.notify("No typescript server path found!", vim.log.levels.ERROR)
+    return
+  end
+end
 --
 -- local changeWorkspaveCapa = function(capabilities)
 --   local params = {
@@ -59,6 +61,7 @@ return {
       servers = {
         ---@type lspconfig.options.volar
         volar = {
+          -- root_dir = require("util.util").root_dir_setting("vue", "package.json"),
           vueserver = { useSecondServer = true },
           filetypes = require("util.npm_func").is_npm_package_installed("vue")
               and { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" }
@@ -93,10 +96,10 @@ return {
               },
             },
           },
-          -- on_new_config = function(new_config, new_root_dir)
-          --   new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
-          --   new_config.init_options.vue.autoInsert.dotValue = true
-          -- end,
+          on_new_config = function(new_config, new_root_dir)
+            new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
+            new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
+          end,
         },
       },
     },

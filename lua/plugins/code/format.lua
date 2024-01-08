@@ -1,8 +1,9 @@
 return {
-  { import = "lazyvim.plugins.extras.formatting.black" },
-  { import = "lazyvim.plugins.extras.formatting.prettier" },
+  { import = "lazyvim.plugins.extras.formatting.black", cond = not vim.g.vscode },
+  { import = "lazyvim.plugins.extras.formatting.prettier", cond = not vim.g.vscode },
   {
     "hrsh7th/nvim-cmp",
+    cond = not vim.g.vscode,
     dependencies = {
       { "windwp/nvim-autopairs", opts = {} },
     },

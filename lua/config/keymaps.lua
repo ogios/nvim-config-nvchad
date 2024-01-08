@@ -47,16 +47,16 @@ local M = {
     ["<C-e>"] = { "<End>", "End of line" },
 
     -- navigate within insert mode
-    ["<C-h>"] = { "<Left>", "Move left" },
-    ["<C-l>"] = { "<Right>", "Move right" },
-    ["<C-j>"] = { "<Down>", "Move down" },
-    ["<C-k>"] = { "<Up>", "Move up" },
+    ["<C-h>"] = { "<Left>", "Move left", true },
+    ["<C-l>"] = { "<Right>", "Move right", true },
+    ["<C-j>"] = { "<Down>", "Move down", true },
+    ["<C-k>"] = { "<Up>", "Move up", true },
     ["jk"] = { "<ESC>", "Exit insert mode" },
   },
 
   n = {
-    ["<M-\\>"] = { lazyterm, "Terminal (root dir)" },
-    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
+    ["<M-\\>"] = { lazyterm, "Terminal (root dir)", true },
+    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep", true },
     ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
 
     -- Copy all
@@ -84,42 +84,48 @@ local M = {
         require("telescope.builtin").lsp_definitions({ reuse_win = true })
       end,
       "Goto Definition",
+      true,
     },
     ["<leader>lr"] = { "<cmd>Telescope lsp_references<cr>", "References" },
-    ["<leader>lD"] = { vim.lsp.buf.declaration, "Goto Declaration" },
+    ["<leader>lD"] = { vim.lsp.buf.declaration, "Goto Declaration", true },
     ["<leader>lI"] = {
       function()
         require("telescope.builtin").lsp_implementations({ reuse_win = true })
       end,
       "Goto Implementation",
+      true,
     },
     ["<leader>lY"] = {
       function()
         require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
       end,
       "Goto T[y]pe Definition",
+      true,
     },
     ["<leader>lf"] = {
       function()
         vim.diagnostic.open_float({ border = "rounded" })
       end,
       "Float diagnostic",
+      true,
     },
     ["<leader>lra"] = {
       vim.lsp.buf.rename,
       "LSP rename",
+      true,
     },
     ["<A-CR>"] = {
       "<CMD>CodeActionMenu<CR>",
       "Code action menu",
+      true,
     },
 
     ["qw"] = { "viw", "select word in visual mode" },
-    ["<leader>ms"] = { "<CMD>SymbolsOutline<CR>", "open up code structure map" },
-    ["<C-S-Up>"] = { "<CMD>resize +5<CR>", "increase window height" },
-    ["<C-S-Down>"] = { "<CMD>resize -5<CR>", "increase window height" },
-    ["<C-S-Left>"] = { "<CMD>vertical resize -5<CR>", "increase window height" },
-    ["<C-S-Right>"] = { "<CMD>vertical resize +5<CR>", "increase window height" },
+    ["<leader>ms"] = { "<CMD>SymbolsOutline<CR>", "open up code structure map", true },
+    ["<C-A-Up>"] = { "<CMD>resize +5<CR>", "increase window height", true },
+    ["<C-A-Down>"] = { "<CMD>resize -5<CR>", "increase window height", true },
+    ["<C-A-Left>"] = { "<CMD>vertical resize -5<CR>", "increase window height", true },
+    ["<C-A-Right>"] = { "<CMD>vertical resize +5<CR>", "increase window height", true },
 
     -- buffer
     ["<leader>dq"] = {
@@ -138,20 +144,24 @@ local M = {
         end
       end,
       "Delete Buffer",
+      true,
     },
     ["<leader>Dq"] = {
       function()
         require("mini.bufremove").delete(0, true)
       end,
       "Delete Buffer (Force)",
+      true,
     },
     ["<Tab>"] = {
       "<CMD>bnext<CR>",
       "Next tab",
+      true,
     },
     ["<S-Tab>"] = {
       "<CMD>bprevious<CR>",
       "Previous tab",
+      true,
     },
   },
 }
@@ -159,6 +169,15 @@ local M = {
 -- set keymap
 for mode, modeval in pairs(M) do
   for key, val in pairs(modeval) do
+    if vim.g.vscode then
+      local ok, notvscode = pcall(function(_val)
+        return _val[3]
+      end, val)
+      if ok and notvscode then
+        goto continue
+      end
+    end
     vim.keymap.set(mode, key, val[1], { desc = val[2], remap = true })
+    ::continue::
   end
 end

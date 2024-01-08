@@ -46,7 +46,9 @@ return {
             return true
           end
 
-          opts.root_dir = require("util.util").root_dir_setting(server, ".git")
+          -- if not opts.root_dir then
+          --   opts.root_dir = require("util.util").root_dir_setting(server, ".git")
+          -- end
         end,
         --   eslint = function(server, opts)
         --     local disabled = require("util.util").is_disabled(server)

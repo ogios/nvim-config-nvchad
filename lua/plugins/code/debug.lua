@@ -1,5 +1,5 @@
 return {
-  { import = "lazyvim.plugins.extras.dap.core" },
+  { import = "lazyvim.plugins.extras.dap.core", cond = not vim.g.vscode },
   -- {
   --   "folke/neodev.nvim",
   --   opts = function(_, opts)
