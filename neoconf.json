@@ -1,7 +1,4 @@
 {
-  "tsserver": {
-    "disable": true
-  },
   "eslint": {
     "disable": true
   }

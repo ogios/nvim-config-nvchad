@@ -6,29 +6,31 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-local spec
-if not vim.g.vscode then
-  spec = {
-    -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- import any extras modules here
-    -- { import = "lazyvim.plugins.extras.lang.typescript" },
-    -- { import = "lazyvim.plugins.extras.lang.json" },
-    -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
-    -- import/override with your plugins
+local spec = {
+  -- add LazyVim and import its plugins
+  { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+  -- import any extras modules here
+  -- { import = "lazyvim.plugins.extras.lang.typescript" },
+  -- { import = "lazyvim.plugins.extras.lang.json" },
+  -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
+  -- import/override with your plugins
+}
+if vim.g.vscode then
+  vim.list_extend(spec, {
+    { import = "plugins.vscode" },
+  })
+else
+  vim.list_extend(spec, {
     { import = "plugins.code" },
     { import = "plugins.others" },
     { import = "plugins.override" },
     { import = "plugins.seldom" },
-  }
-else
-  spec = {
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    { import = "plugins.vscode.code" },
-    { import = "plugins.vscode.others" },
-    { import = "plugins.vscode.override" },
-    { import = "plugins.vscode.seldom" },
-  }
+  })
+  if vim.g.coc then
+    vim.list_extend(spec, {
+      { import = "plugins.coc" },
+    })
+  end
 end
 
 require("lazy").setup({

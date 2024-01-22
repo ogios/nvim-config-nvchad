@@ -1,38 +1,38 @@
 return {
   -- { import = "lazyvim.plugins.extras.coding.tabnine" },
   { import = "lazyvim.plugins.extras.editor.navic" },
-  { import = "lazyvim.plugins.extras.ui.edgy" },
   { import = "lazyvim.plugins.extras.editor.symbols-outline" },
 
-  -- edgy integration
-  {
-    "folke/edgy.nvim",
-    opts = function(_, opts)
-      opts.left = opts.left or {}
-      local deletions = { "Neo-Tree Buffers", "Neo-Tree Git" }
-
-      -- delete
-      local del = {}
-      for index, val in ipairs(opts.left) do
-        if type(val) == "table" then
-          if vim.tbl_contains(deletions, val.title) then
-            table.insert(del, 1, index)
-          end
-        end
-      end
-      for _, val in ipairs(del) do
-        table.remove(opts.left, val)
-      end
-
-      -- add SymbolsOutline
-      table.insert(opts.left, {
-        title = "Symbols Outline",
-        ft = "Outline",
-        pinned = true,
-        open = "SymbolsOutline",
-      })
-    end,
-  },
+  -- { import = "lazyvim.plugins.extras.ui.edgy" },
+  -- -- edgy integration
+  -- {
+  --   "folke/edgy.nvim",
+  --   opts = function(_, opts)
+  --     opts.left = opts.left or {}
+  --     local deletions = { "Neo-Tree Buffers", "Neo-Tree Git" }
+  --
+  --     -- delete
+  --     local del = {}
+  --     for index, val in ipairs(opts.left) do
+  --       if type(val) == "table" then
+  --         if vim.tbl_contains(deletions, val.title) then
+  --           table.insert(del, 1, index)
+  --         end
+  --       end
+  --     end
+  --     for _, val in ipairs(del) do
+  --       table.remove(opts.left, val)
+  --     end
+  --
+  --     -- add SymbolsOutline
+  --     table.insert(opts.left, {
+  --       title = "Symbols Outline",
+  --       ft = "Outline",
+  --       pinned = true,
+  --       open = "SymbolsOutline",
+  --     })
+  --   end,
+  -- },
 
   {
     "weilbith/nvim-code-action-menu",
