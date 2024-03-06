@@ -53,6 +53,52 @@ return {
     end,
   },
 
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   dependencies = {
+  --     "pmizio/typescript-tools.nvim",
+  --   },
+  --   opts = {
+  --     servers = {
+  --       tsservercontext = {},
+  --     },
+  --
+  --     setup = {
+  --       tsservercontext = function(_, opts)
+  --         local neoconf = require("neoconf")
+  --         local lspconfig = require("lspconfig")
+  --
+  --         if neoconf.get("is-volar-project") then
+  --           lspconfig["volar"].setup({
+  --             server = opts,
+  --             settings = {},
+  --           })
+  --
+  --           require("typescript-tools").setup({
+  --             server = opts,
+  --             settings = {
+  --               tsserver_plugins = {
+  --                 "@vue/typescript-plugin",
+  --               },
+  --             },
+  --             filetypes = {
+  --               "javascript",
+  --               "typescript",
+  --               "vue",
+  --             },
+  --           })
+  --         else
+  --           require("typescript-tools").setup({
+  --             server = opts,
+  --           })
+  --         end
+  --
+  --         return true
+  --       end,
+  --     },
+  --   },
+  -- },
+
   -- correctly setup lspconfig
   {
     "neovim/nvim-lspconfig",
@@ -61,7 +107,7 @@ return {
       servers = {
         ---@type lspconfig.options.volar
         volar = {
-          -- root_dir = require("util.util").root_dir_setting("vue", "package.json"),
+          root_dir = require("util.util").root_dir_setting("vue", "package.json"),
           vueserver = { useSecondServer = true },
           filetypes = require("util.npm_func").is_npm_package_installed("vue")
               and { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" }
@@ -96,10 +142,10 @@ return {
               },
             },
           },
-          on_new_config = function(new_config, new_root_dir)
-            new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
-            new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
-          end,
+          -- on_new_config = function(new_config, new_root_dir)
+          --   new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
+          --   new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
+          -- end,
         },
       },
     },

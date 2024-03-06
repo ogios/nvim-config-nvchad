@@ -3,6 +3,11 @@ return {
   { import = "lazyvim.plugins.extras.editor.navic" },
   { import = "lazyvim.plugins.extras.editor.symbols-outline" },
 
+  {
+    "wavded/vim-stylus",
+    event = { "BufEnter" },
+  },
+
   -- { import = "lazyvim.plugins.extras.ui.edgy" },
   -- -- edgy integration
   -- {
@@ -33,6 +38,45 @@ return {
   --     })
   --   end,
   -- },
+
+  -- override file explorer keymap
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    cmd = "Neotree",
+    keys = {
+      {
+        "<leader>fe",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+        end,
+        desc = "Explorer NeoTree (cwd)",
+      },
+      {
+        "<leader>fE",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").root() })
+        end,
+        desc = "Explorer NeoTree (root dir)",
+      },
+      { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (cwd)", remap = true },
+      { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (root dir)", remap = true },
+      {
+        "<leader>ge",
+        function()
+          require("neo-tree.command").execute({ source = "git_status", toggle = true })
+        end,
+        desc = "Git explorer",
+      },
+      {
+        "<leader>be",
+        function()
+          require("neo-tree.command").execute({ source = "buffers", toggle = true })
+        end,
+        desc = "Buffer explorer",
+      },
+    },
+  },
 
   {
     "weilbith/nvim-code-action-menu",
@@ -123,5 +167,16 @@ return {
         "jsonc",
       })
     end,
+  },
+  {
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+    keys = { -- Example mapping to toggle outline
+      -- { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+    },
+    opts = {
+      -- Your setup opts here
+    },
   },
 }
