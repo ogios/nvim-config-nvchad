@@ -121,7 +121,7 @@ local M = {
     },
 
     ["qw"] = { "viw", "select word in visual mode" },
-    ["<leader>ms"] = { "<CMD>SymbolsOutline<CR>", "open up code structure map", true },
+    ["<leader>ms"] = { "<CMD>Outline<CR>", "open up code structure map", true },
     ["<C-A-Up>"] = { "<CMD>resize +5<CR>", "increase window height", true },
     ["<C-A-Down>"] = { "<CMD>resize -5<CR>", "increase window height", true },
     ["<C-A-Left>"] = { "<CMD>vertical resize -5<CR>", "increase window height", true },
