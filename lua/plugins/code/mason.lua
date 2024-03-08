@@ -106,4 +106,13 @@ return {
   { import = "lazyvim.plugins.extras.lang.go" },
   { import = "lazyvim.plugins.extras.lang.java" },
   { import = "lazyvim.plugins.extras.lang.yaml" },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    ---@class MasonLspconfigSettings
+    opts = {
+      ensure_installed = {
+        "vue-language-server@1.8.27",
+      },
+    },
+  },
 }
