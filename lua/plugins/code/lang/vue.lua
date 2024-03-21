@@ -105,7 +105,7 @@ return {
     opts = {
       -- make sure mason installs the server
       servers = {
-        ---@type lspconfig.options.volar
+        ---@type lspconfig.options.vuels
         volar = {
           root_dir = require("util.util").root_dir_setting("vue", "package.json"),
           vueserver = { useSecondServer = true },
@@ -113,35 +113,39 @@ return {
               and { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" }
             or { "vue" },
           single_file_support = false,
-
-          settings = {
-            typescript = {
-              preferences = {
-                importModuleSpecifier = "non-relative",
-              },
-            },
+          init_options = {
             vue = {
-              inlayHints = {
-                inlineHandlerLeading = true,
-                missingProps = true,
-                optionsWrapper = true,
-              },
-              server = {
-                petiteVue = {
-                  supportHtmlFile = true,
-                },
-                diagnosticModel = "push",
-              },
-              autoInsert = {
-                bracketSpacing = true,
-                dotValue = true,
-                parentheses = true,
-              },
-              updateImportsOnFileMove = {
-                enabled = true,
-              },
+              hybridMode = false,
             },
           },
+          -- settings = {
+          --   typescript = {
+          --     preferences = {
+          --       importModuleSpecifier = "non-relative",
+          --     },
+          --   },
+          --   vue = {
+          --     inlayHints = {
+          --       inlineHandlerLeading = true,
+          --       missingProps = true,
+          --       optionsWrapper = true,
+          --     },
+          --     server = {
+          --       petiteVue = {
+          --         supportHtmlFile = true,
+          --       },
+          --       diagnosticModel = "push",
+          --     },
+          --     autoInsert = {
+          --       bracketSpacing = true,
+          --       dotValue = true,
+          --       parentheses = true,
+          --     },
+          --     updateImportsOnFileMove = {
+          --       enabled = true,
+          --     },
+          --   },
+          -- },
           -- on_new_config = function(new_config, new_root_dir)
           --   new_config.init_options.typescript.serverPath = get_typescript_server_path(new_root_dir)
           --   new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)

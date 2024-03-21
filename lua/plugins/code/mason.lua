@@ -36,34 +36,7 @@ return {
         sqlls = {},
         jdtls = {},
         gradle_ls = {},
-        tsserver = {
-          init_options = {
-            plugins = {
-              {
-                name = "@vue/typescript-plugin",
-                location = "/usr/lib/node_modules/@vue/typescript-plugin",
-                languages = {
-                  "vue",
-                  "javascript",
-                  "javascriptreact",
-                  "javascript.jsx",
-                  "typescript",
-                  "typescriptreact",
-                  "typescript.tsx",
-                },
-              },
-            },
-          },
-          filetypes = {
-            "vue",
-            "javascript",
-            "javascriptreact",
-            "javascript.jsx",
-            "typescript",
-            "typescriptreact",
-            "typescript.tsx",
-          },
-        },
+        tsserver = {},
       },
 
       setup = {
@@ -119,7 +92,7 @@ return {
   },
 
   { import = "plugins.code.lang.go" },
-  -- { import = "plugins.code.lang.vue" },
+  { import = "plugins.code.lang.vue" },
   { import = "plugins.code.lang.sql" },
 
   {
@@ -138,9 +111,9 @@ return {
     "williamboman/mason-lspconfig.nvim",
     ---@class MasonLspconfigSettings
     opts = {
-      ensure_installed = {
-        "vue-language-server@1.8.27",
-      },
+      -- ensure_installed = {
+      --   "vue-language-server@1.8.27",
+      -- },
     },
   },
 }
