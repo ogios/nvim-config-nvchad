@@ -80,28 +80,36 @@ local M = {
 
     -- lsp
     ["<leader>ld"] = {
-      function()
-        require("telescope.builtin").lsp_definitions({ reuse_win = true })
-      end,
+      -- function()
+      --   require("telescope.builtin").lsp_definitions({ reuse_win = true })
+      -- end,
+      "<CMD>Glance definitions<CR>",
       "Goto Definition",
       true,
     },
-    ["<leader>lr"] = { "<cmd>Telescope lsp_references<cr>", "References" },
-    ["<leader>lD"] = { vim.lsp.buf.declaration, "Goto Declaration", true },
-    ["<leader>lI"] = {
-      function()
-        require("telescope.builtin").lsp_implementations({ reuse_win = true })
-      end,
-      "Goto Implementation",
-      true,
+    ["<leader>lr"] = {
+      -- "<cmd>Telescope lsp_references<cr>",
+      "<CMD>Glance references<CR>",
+      "References",
     },
     ["<leader>lY"] = {
-      function()
-        require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
-      end,
+      -- function()
+      --   require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+      -- end,
+      "<CMD>Glance type_definitions<CR>",
       "Goto T[y]pe Definition",
       true,
     },
+    ["<leader>lI"] = {
+      -- function()
+      --   require("telescope.builtin").lsp_implementations({ reuse_win = true })
+      -- end,
+      "<CMD>Glance implementations<CR>",
+      "Goto Implementation",
+      true,
+    },
+
+    ["<leader>lD"] = { vim.lsp.buf.declaration, "Goto Declaration", true },
     ["<leader>lf"] = {
       function()
         vim.diagnostic.open_float({ border = "rounded" })
