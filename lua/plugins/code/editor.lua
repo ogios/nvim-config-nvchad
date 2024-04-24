@@ -155,6 +155,7 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "hyprlang",
 
         -- other
         "tsx",
