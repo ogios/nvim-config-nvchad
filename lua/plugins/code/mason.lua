@@ -9,7 +9,8 @@ return {
       },
       --- @type lsp.CodeLens
       codelens = {
-        enabled = true,
+        -- enabled = true,
+        enabled = false,
       },
       --- @type vim.diagnostic.Opts
       diagnostics = {
