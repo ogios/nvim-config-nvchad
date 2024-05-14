@@ -166,6 +166,7 @@ return {
         "java",
         "go",
         "jsonc",
+        "scss",
       })
     end,
   },

@@ -116,6 +116,15 @@ return {
           init_options = {
             vue = {
               hybridMode = false,
+              server = {
+                petiteVue = {
+                  supportHtmlFile = true,
+                },
+                diagnosticModel = "push",
+              },
+              updateImportsOnFileMove = {
+                enabled = true,
+              },
             },
           },
           -- settings = {
