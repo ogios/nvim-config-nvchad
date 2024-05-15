@@ -123,6 +123,7 @@ return {
   { import = "plugins.code.lang.go" },
   { import = "plugins.code.lang.vue" },
   { import = "plugins.code.lang.sql" },
+  { import = "plugins.code.lang.dart" },
 
   {
     "nvimtools/none-ls.nvim",
