@@ -121,22 +121,10 @@ return {
   },
 
   { import = "plugins.code.lang.go" },
-  { import = "plugins.code.lang.vue" },
+  -- { import = "plugins.code.lang.vue" },
   { import = "plugins.code.lang.sql" },
   { import = "plugins.code.lang.dart" },
 
-  {
-    "nvimtools/none-ls.nvim",
-    lazy = true,
-  },
-  { import = "lazyvim.plugins.extras.lsp.none-ls" },
-  { import = "lazyvim.plugins.extras.lang.typescript" },
-  { import = "lazyvim.plugins.extras.lang.json" },
-  { import = "lazyvim.plugins.extras.lang.python" },
-  { import = "lazyvim.plugins.extras.lang.python-semshi" },
-  { import = "lazyvim.plugins.extras.lang.go" },
-  { import = "lazyvim.plugins.extras.lang.java" },
-  { import = "lazyvim.plugins.extras.lang.yaml" },
   {
     "williamboman/mason-lspconfig.nvim",
     ---@class MasonLspconfigSettings

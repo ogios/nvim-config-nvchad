@@ -129,7 +129,7 @@ local M = {
     },
 
     ["qw"] = { "viw", "select word in visual mode" },
-    ["<leader>ms"] = { "<CMD>Outline<CR>", "open up code structure map", true },
+    ["<leader>ms"] = { "<CMD>Trouble symbols<CR>", "open up code structure map", true },
     ["<C-A-Up>"] = { "<CMD>resize +5<CR>", "increase window height", true },
     ["<C-A-Down>"] = { "<CMD>resize -5<CR>", "increase window height", true },
     ["<C-A-Left>"] = { "<CMD>vertical resize -5<CR>", "increase window height", true },
@@ -137,21 +137,8 @@ local M = {
 
     -- buffer
     ["<leader>dq"] = {
-      function()
-        local bd = require("mini.bufremove").delete
-        if vim.bo.modified then
-          local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
-          if choice == 1 then -- Yes
-            vim.cmd.write()
-            bd(0)
-          elseif choice == 2 then -- No
-            bd(0, true)
-          end
-        else
-          bd(0)
-        end
-      end,
-      "Delete Buffer",
+      LazyVim.ui.bufremove,
+      "remove buffer",
       true,
     },
     ["<leader>Dq"] = {

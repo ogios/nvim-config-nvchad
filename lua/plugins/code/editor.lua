@@ -1,7 +1,4 @@
 return {
-  -- { import = "lazyvim.plugins.extras.coding.tabnine" },
-  { import = "lazyvim.plugins.extras.editor.navic" },
-  { import = "lazyvim.plugins.extras.editor.outline" },
 
   {
     "wavded/vim-stylus",
@@ -28,14 +25,6 @@ return {
   --     for _, val in ipairs(del) do
   --       table.remove(opts.left, val)
   --     end
-  --
-  --     -- add SymbolsOutline
-  --     table.insert(opts.left, {
-  --       title = "Symbols Outline",
-  --       ft = "Outline",
-  --       pinned = true,
-  --       open = "SymbolsOutline",
-  --     })
   --   end,
   -- },
 
@@ -169,16 +158,5 @@ return {
         "scss",
       })
     end,
-  },
-  {
-    "hedyhli/outline.nvim",
-    lazy = true,
-    cmd = { "Outline", "OutlineOpen" },
-    keys = { -- Example mapping to toggle outline
-      -- { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
-    },
-    opts = {
-      -- Your setup opts here
-    },
   },
 }
