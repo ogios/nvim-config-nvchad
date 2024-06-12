@@ -46,12 +46,12 @@ local M = {
   { "qw", "viw", desc = "select word in visual mode", mode = "n" },
 
   -- telescope
-  { "<leader>fw", "<cmd> Telescope live_grep <CR>", desc = "Live grep", mode = "n" },
+  { "<leader>fw", "<cmd> Telescope live_grep <CR>", desc = "Live grep", mode = "n", remap = true, nowait = true },
   { "<leader>md", "<cmd> Telescope commands <CR>", desc = "telescope builtin command", mode = "n" },
   -- telescope
 
   -- lsp
-  { "<A-CR>", require("actions-preview").code_actions, mode = { "n", "v" }, desc = "Code action menu", mode = "n" },
+  { "<A-CR>", require("actions-preview").code_actions, mode = { "n", "v" }, desc = "Code action menu" },
   {
     "<leader>lfm",
     function()
@@ -89,5 +89,15 @@ local M = {
   { "<S-Tab>", "<CMD>bprevious<CR>", "Previous tab", mode = "n" },
   -- buffer
 }
-
-vim.list_extend(require("lazyvim.plugins.lsp.keymaps").get(), M)
+local map = LazyVim.safe_keymap_set
+for _, m in pairs(M) do
+  if vim.isarray(m.mode) then
+    for _, mode in ipairs(m.mode) do
+      map(mode, m[1], m[2], { desc = m.desc, remap = m.remap, nowait = m.nowait, silent = m.silent })
+    end
+  elseif m.mode then
+    map(m.mode, m[1], m[2], { desc = m.desc, remap = m.remap, nowait = m.nowait, silent = m.silent })
+  else
+    map("n", m[1], m[2], { desc = m.desc, remap = m.remap, nowait = m.nowait, silent = m.silent })
+  end
+end
