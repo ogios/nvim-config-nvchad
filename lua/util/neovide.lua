@@ -1,3 +1,4 @@
+vim.o.guifont = "JetBrainsMono Nerd Font Propo:h15"
 local key = vim.keymap
 if vim.g.neovide then
   key.set({ "n", "v" }, "<C-S-v>", '"+p')
