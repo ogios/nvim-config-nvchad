@@ -68,9 +68,11 @@ return {
   },
 
   {
-    "weilbith/nvim-code-action-menu",
-    cmd = "CodeActionMenu",
-    event = { "BufEnter" },
+    "aznhe21/actions-preview.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("actions-preview").setup()
+    end,
   },
 
   {

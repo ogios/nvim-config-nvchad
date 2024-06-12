@@ -28,151 +28,66 @@ local Util = require("lazyvim.util")
 local lazyterm = function()
   Util.terminal(nil, { cwd = Util.root() })
 end
+---@type LazyKeysLspSpec[]
 local M = {
-  x = {
-    ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text" },
+  { "p", 'p:let @+=@0<CR>:let @"=@0<CR>', desc = "Dont copy replaced text", mode = { "x", "v", "n" } },
+  { "<M-\\>", "<cmd>close<cr>", desc = "Close terminal (root dir)", mode = "t" },
+  { "<M-\\>", lazyterm, desc = "Terminal (root dir)", mode = "n" },
+  { "<C-b>", "<ESC>^i", desc = "Beginning of line", mode = "i" },
+  { "<C-e>", "<End>", desc = "End of line", mode = "i" },
+  { "<C-h>", "<Left>", desc = "Move left", mode = "i" },
+  { "<C-l>", "<Right>", desc = "Move right", mode = "i" },
+  { "<C-j>", "<Down>", desc = "Move down", mode = "i" },
+  { "<C-k>", "<Up>", desc = "Move up", mode = "i" },
+  { "jk", "<ESC>", desc = "Exit insert mode", mode = "i" },
+
+  { "<Esc>", ":noh <CR>", desc = "Clear highlights", mode = "n" },
+  { "<C-c>", "<cmd> %y+ <CR>", desc = "Copy whole file", mode = "n" },
+  { "qw", "viw", desc = "select word in visual mode", mode = "n" },
+
+  -- telescope
+  { "<leader>fw", "<cmd> Telescope live_grep <CR>", desc = "Live grep", mode = "n" },
+  { "<leader>md", "<cmd> Telescope commands <CR>", desc = "telescope builtin command", mode = "n" },
+  -- telescope
+
+  -- lsp
+  { "<A-CR>", require("actions-preview").code_actions, mode = { "n", "v" }, desc = "Code action menu", mode = "n" },
+  {
+    "<leader>lfm",
+    function()
+      require("lazyvim.util").format({ force = true })
+    end,
+    desc = "LSP formatting",
+    mode = "n",
   },
-
-  v = {
-    ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text" },
+  { "<leader>ld", "<CMD>Glance definitions<CR>", desc = "Goto Definition", mode = "n" },
+  { "<leader>lr", "<CMD>Glance references<CR>", desc = "Goto References", mode = "n" },
+  { "<leader>lY", "<CMD>Glance type_definitions<CR>", desc = "Goto Type Definition", mode = "n" },
+  { "<leader>lI", "<CMD>Glance implementations<CR>", desc = "Goto Implementation", mode = "n" },
+  { "<leader>lD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
+  {
+    "<leader>lf",
+    function()
+      vim.diagnostic.open_float({ border = "rounded" })
+    end,
+    desc = "Float diagnostic",
+    mode = "n",
   },
+  { "<leader>lra", "<CMD>IncRename<CR>", desc = "IncRename", mode = "n" },
+  -- lsp
 
-  t = {
-    ["<M-\\>"] = { "<cmd>close<cr>", "Close terminal (root dir)" },
-  },
+  -- window size
+  { "<C-A-Up>", "<CMD>resize +5<CR>", desc = "increase window height", mode = "n" },
+  { "<C-A-Down>", "<CMD>resize -5<CR>", desc = "increase window height", mode = "n" },
+  { "<C-A-Left>", "<CMD>vertical resize -5<CR>", desc = "increase window height", mode = "n" },
+  { "<C-A-Right>", "<CMD>vertical resize +5<CR>", desc = "increase window height", mode = "n" },
+  -- window size
 
-  i = {
-    -- go to  beginning and end
-    ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
-    ["<C-e>"] = { "<End>", "End of line" },
-
-    -- navigate within insert mode
-    ["<C-h>"] = { "<Left>", "Move left", true },
-    ["<C-l>"] = { "<Right>", "Move right", true },
-    ["<C-j>"] = { "<Down>", "Move down", true },
-    ["<C-k>"] = { "<Up>", "Move up", true },
-    ["jk"] = { "<ESC>", "Exit insert mode" },
-  },
-
-  n = {
-    ["<M-\\>"] = { lazyterm, "Terminal (root dir)", true },
-    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep", true },
-    ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
-
-    -- Copy all
-    ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
-
-    -- Format
-    ["<leader>fm"] = {
-      function()
-        require("lazyvim.util").format({ force = true })
-      end,
-      "LSP formatting",
-    },
-
-    -- command
-    ["<leader>md"] = {
-      function()
-        require("telescope.builtin").commands()
-      end,
-      "telescope builtin command",
-    },
-
-    -- lsp
-    ["<leader>ld"] = {
-      -- function()
-      --   require("telescope.builtin").lsp_definitions({ reuse_win = true })
-      -- end,
-      "<CMD>Glance definitions<CR>",
-      "Goto Definition",
-      true,
-    },
-    ["<leader>lr"] = {
-      -- "<cmd>Telescope lsp_references<cr>",
-      "<CMD>Glance references<CR>",
-      "References",
-    },
-    ["<leader>lY"] = {
-      -- function()
-      --   require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
-      -- end,
-      "<CMD>Glance type_definitions<CR>",
-      "Goto T[y]pe Definition",
-      true,
-    },
-    ["<leader>lI"] = {
-      -- function()
-      --   require("telescope.builtin").lsp_implementations({ reuse_win = true })
-      -- end,
-      "<CMD>Glance implementations<CR>",
-      "Goto Implementation",
-      true,
-    },
-
-    ["<leader>lD"] = { vim.lsp.buf.declaration, "Goto Declaration", true },
-    ["<leader>lf"] = {
-      function()
-        vim.diagnostic.open_float({ border = "rounded" })
-      end,
-      "Float diagnostic",
-      true,
-    },
-    ["<leader>lra"] = {
-      vim.lsp.buf.rename,
-      "LSP rename",
-      true,
-    },
-    ["<A-CR>"] = {
-      "<CMD>CodeActionMenu<CR>",
-      "Code action menu",
-      true,
-    },
-
-    ["qw"] = { "viw", "select word in visual mode" },
-    ["<leader>ms"] = { "<CMD>Trouble symbols<CR>", "open up code structure map", true },
-    ["<C-A-Up>"] = { "<CMD>resize +5<CR>", "increase window height", true },
-    ["<C-A-Down>"] = { "<CMD>resize -5<CR>", "increase window height", true },
-    ["<C-A-Left>"] = { "<CMD>vertical resize -5<CR>", "increase window height", true },
-    ["<C-A-Right>"] = { "<CMD>vertical resize +5<CR>", "increase window height", true },
-
-    -- buffer
-    ["<leader>dq"] = {
-      LazyVim.ui.bufremove,
-      "remove buffer",
-      true,
-    },
-    ["<leader>Dq"] = {
-      function()
-        require("mini.bufremove").delete(0, true)
-      end,
-      "Delete Buffer (Force)",
-      true,
-    },
-    ["<Tab>"] = {
-      "<CMD>bnext<CR>",
-      "Next tab",
-      true,
-    },
-    ["<S-Tab>"] = {
-      "<CMD>bprevious<CR>",
-      "Previous tab",
-      true,
-    },
-  },
+  -- buffer
+  { "<leader>dq", LazyVim.ui.bufremove, "remove buffer", mode = "n" },
+  { "<Tab>", "<CMD>bnext<CR>", "Next tab", mode = "n" },
+  { "<S-Tab>", "<CMD>bprevious<CR>", "Previous tab", mode = "n" },
+  -- buffer
 }
 
--- set keymap
-for mode, modeval in pairs(M) do
-  for key, val in pairs(modeval) do
-    if vim.g.vscode then
-      local ok, notvscode = pcall(function(_val)
-        return _val[3]
-      end, val)
-      if ok and notvscode then
-        goto continue
-      end
-    end
-    vim.keymap.set(mode, key, val[1], { desc = val[2], remap = true })
-    ::continue::
-  end
-end
+vim.list_extend(require("lazyvim.plugins.lsp.keymaps").get(), M)
