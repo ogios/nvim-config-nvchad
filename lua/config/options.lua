@@ -4,7 +4,7 @@
 
 vim.opt.wrap = true
 -- vim.o.guifont = "JetBrainsMono Nerd Font Mono:h16"
-vim.o.guifont = "JetBrainsMono Nerd Font Mono:h15"
+vim.o.guifont = "JetBrainsMono Nerd Font Propo:h15"
 vim.g.mkdp_auto_close = 0
 vim.g.mkdp_combine_preview = 1
 require("util.neovide")
