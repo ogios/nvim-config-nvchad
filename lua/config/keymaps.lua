@@ -73,7 +73,7 @@ local M = {
     desc = "Float diagnostic",
     mode = "n",
   },
-  { "<leader>lra", "<CMD>IncRename<CR>", desc = "IncRename", mode = "n" },
+  { "<leader>lra", ":IncRename ", desc = "IncRename", mode = "n" },
   -- lsp
 
   -- window size
