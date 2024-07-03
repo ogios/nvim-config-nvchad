@@ -40,6 +40,7 @@ vim.list_extend(spec, {
   { import = "plugins.override" },
   { import = "plugins.seldom" },
   { import = "plugins.code.lang.rust" },
+  { import = "plugins.code.lang.hypr" },
 })
 
 require("lazy").setup({
