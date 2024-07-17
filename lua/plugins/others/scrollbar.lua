@@ -1,6 +1,6 @@
 return {
   "petertriho/nvim-scrollbar",
-  lazy = true,
+  event = { "VeryLazy" },
   dependencies = {
     "lewis6991/gitsigns.nvim",
     config = function()
