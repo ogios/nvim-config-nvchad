@@ -46,9 +46,14 @@ local M = {
   { "qw", "viw", desc = "select word in visual mode", mode = "n" },
 
   -- telescope
-  { "<leader>fw", "<cmd> Telescope live_grep <CR>", desc = "Live grep", mode = "n", remap = true, nowait = true },
-  { "<leader>md", "<cmd> Telescope commands <CR>", desc = "telescope builtin command", mode = "n" },
+  -- { "<leader>fw", "<cmd> Telescope live_grep <CR>", desc = "Live grep", mode = "n", remap = true, nowait = true },
+  -- { "<leader>md", "<cmd> Telescope commands <CR>", desc = "telescope builtin command", mode = "n" },
   -- telescope
+
+  -- fzf-lua
+  { "<leader>fw", "<cmd> FzfLua live_grep <CR>", desc = "Live grep", mode = "n", remap = true, nowait = true },
+  { "<leader>md", "<cmd> FzfLua commands <CR>", desc = "Find Command", mode = "n" },
+  -- fzf-lua
 
   -- lsp
   { "<A-CR>", require("actions-preview").code_actions, mode = { "n", "v" }, desc = "Code action menu" },
