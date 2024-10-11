@@ -41,6 +41,7 @@ vim.list_extend(spec, {
   { import = "plugins.seldom" },
   { import = "plugins.code.lang.rust" },
   { import = "plugins.code.lang.hypr" },
+  { import = "plugins.code.lang.proto" },
 })
 
 require("lazy").setup({
