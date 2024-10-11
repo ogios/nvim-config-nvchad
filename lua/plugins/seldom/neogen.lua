@@ -11,5 +11,5 @@ return {
       desc = "Neogen Comment",
     },
   },
-  opts = { snippet_engine = "luasnip" },
+  -- opts = { snippet_engine = "luasnip" },
 }
