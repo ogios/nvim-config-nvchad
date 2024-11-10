@@ -28,15 +28,7 @@ return {
   {
     "mrcjkb/rustaceanvim",
     opts = function(_, opts)
-      require("lazyvim.util").info(vim.inspect(opts))
-
       opts.server.capabilities = vim.lsp.protocol.make_client_capabilities()
-
-      -- vim.g.rustaceanvim = {
-      --   server = {
-      --     capabilities = vim.lsp.protocol.make_client_capabilities(),
-      --   },
-      -- }
 
       local specify_features = require("neoconf").get("rust.features", nil)
       if specify_features == nil then
