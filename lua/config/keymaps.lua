@@ -89,7 +89,14 @@ local M = {
   -- window size
 
   -- buffer
-  { "<leader>dq", LazyVim.ui.bufremove, "remove buffer", mode = "n" },
+  {
+    "<leader>dq",
+    function()
+      Snacks.bufdelete()
+    end,
+    "remove buffer",
+    mode = "n",
+  },
   { "<Tab>", "<CMD>bnext<CR>", "Next tab", mode = "n" },
   { "<S-Tab>", "<CMD>bprevious<CR>", "Previous tab", mode = "n" },
   -- buffer
