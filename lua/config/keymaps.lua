@@ -26,7 +26,7 @@ end
 
 local Util = require("lazyvim.util")
 local lazyterm = function()
-  Util.terminal(nil, { cwd = Util.root() })
+  Snacks.terminal(nil, { cwd = Util.root() })
 end
 ---@type LazyKeysLspSpec[]
 local M = {
