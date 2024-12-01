@@ -3,15 +3,15 @@ return {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
-      --- @type lsp.InlayHint
-      inlay_hints = {
-        enabled = true,
-      },
-      --- @type lsp.CodeLens
-      codelens = {
-        -- enabled = true,
-        enabled = false,
-      },
+      --- --- @type lsp.InlayHint
+      --- inlay_hints = {
+      ---   enabled = true,
+      --- },
+      --- --- @type lsp.CodeLens
+      --- codelens = {
+      ---   -- enabled = true,
+      ---   enabled = false,
+      --- },
       --- @type vim.diagnostic.Opts
       diagnostics = {
         underline = true,
@@ -43,29 +43,29 @@ return {
           end,
         },
         unocss = {},
-        powershell_es = {
-          settings = {
-            powershell = {
-              codeFormatting = {
-                Preset = "OTBS",
-              },
-            },
-          },
-        },
-        pyright = {},
-        ansiblels = {},
+        -- powershell_es = {
+        --   settings = {
+        --     powershell = {
+        --       codeFormatting = {
+        --         Preset = "OTBS",
+        --       },
+        --     },
+        --   },
+        -- },
+        -- pyright = {},
+        -- ansiblels = {},
         bashls = {},
         clangd = {},
         cssls = {},
-        dockerls = {},
-        html = {},
-        gopls = {},
-        marksman = {},
-        volar = {},
-        sqlls = {},
-        jdtls = {},
-        gradle_ls = {},
-        tsserver = {},
+        -- dockerls = {},
+        -- html = {},
+        -- gopls = {},
+        -- marksman = {},
+        -- volar = {},
+        -- sqlls = {},
+        -- jdtls = {},
+        -- gradle_ls = {},
+        -- tsserver = {},
       },
 
       setup = {
@@ -118,20 +118,5 @@ return {
     --   end
     --   require("lazyvim.util").info(vim.inspect(b))
     -- end,
-  },
-
-  { import = "plugins.code.lang.go" },
-  -- { import = "plugins.code.lang.vue" },
-  { import = "plugins.code.lang.sql" },
-  { import = "plugins.code.lang.dart" },
-
-  {
-    "williamboman/mason-lspconfig.nvim",
-    ---@class MasonLspconfigSettings
-    opts = {
-      -- ensure_installed = {
-      --   "vue-language-server@1.8.27",
-      -- },
-    },
   },
 }

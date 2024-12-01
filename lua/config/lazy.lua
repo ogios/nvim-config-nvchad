@@ -15,33 +15,12 @@ local spec = {
   -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
   -- import/override with your plugins
 }
--- if vim.g.vscode then
---   vim.list_extend(spec, {
---     { import = "plugins.vscode" },
---   })
--- else
---   vim.list_extend(spec, {
---     { import = "plugins.code" },
---     -- { import = "plugins.others" },
---     -- { import = "plugins.override" },
---     -- { import = "plugins.seldom" },
---   })
---   if vim.g.coc then
---     vim.list_extend(spec, {
---       { import = "plugins.coc" },
---     })
---   end
---
--- end
 
 vim.list_extend(spec, {
   { import = "plugins.code" },
   { import = "plugins.others" },
   { import = "plugins.override" },
   { import = "plugins.seldom" },
-  { import = "plugins.code.lang.rust" },
-  { import = "plugins.code.lang.hypr" },
-  { import = "plugins.code.lang.proto" },
 })
 
 require("lazy").setup({
