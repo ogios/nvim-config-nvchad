@@ -8,7 +8,5 @@ return {
       require("scrollbar.handlers.gitsigns").setup()
     end,
   },
-  config = function()
-    require("scrollbar").setup()
-  end,
+  config = true,
 }

@@ -6,7 +6,7 @@ return {
   },
   config = function()
     local glance = require("glance")
-    -- local actions = glance.actions
+    local actions = glance.actions
 
     glance.setup({
       height = 36,
@@ -14,23 +14,22 @@ return {
         enable = true,
         mode = "darken",
       },
-      -- mappings = {
-      --   list = {
-      --     ["\\"] = actions.jump_vsplit,
-      --     ["-"] = actions.jump_split,
-      --     ["s"] = "<Plug>(leap-forward-to)",
-      --     ["v"] = "v",
-      --     ["gp"] = actions.enter_win("preview"),
-      --     ["<leader>l"] = "<leader>l",
-      --   },
-      --   preview = {
-      --     ["gp"] = actions.enter_win("list"),
-      --     ["<leader>l"] = "<leader>l",
-      --   },
-      -- },
+      mappings = {
+        list = {
+          ["gp"] = actions.enter_win("preview"),
+        },
+        preview = {
+          ["gp"] = actions.enter_win("list"),
+          ["Q"] = actions.close(),
+        },
+      },
       folds = {
         folded = false,
       },
+      border = {
+        enable = true,
+      },
+      use_trouble_qf = true,
     })
   end,
 }

@@ -1,5 +1,3 @@
-vim.g.lazyvim_python_lsp = "pylyzer"
-
 return {
   -- dart
   {

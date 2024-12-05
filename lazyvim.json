@@ -1,6 +1,9 @@
 {
   "extras": [
     "lazyvim.plugins.extras.ai.codeium",
+    "lazyvim.plugins.extras.coding.mini-surround",
+    "lazyvim.plugins.extras.coding.neogen",
+    "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.editor.fzf",
@@ -32,6 +35,7 @@
     "lazyvim.plugins.extras.ui.mini-indentscope",
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.dot",
+    "lazyvim.plugins.extras.util.mini-hipatterns",
     "lazyvim.plugins.extras.util.project",
     "lazyvim.plugins.extras.util.startuptime"
   ],

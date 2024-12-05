@@ -8,3 +8,5 @@ vim.o.guifont = "JetBrainsMono Nerd Font Propo:h15"
 vim.g.mkdp_auto_close = 0
 vim.g.mkdp_combine_preview = 1
 require("util.neovide")
+
+vim.g.lazyvim_python_lsp = "pylyzer"

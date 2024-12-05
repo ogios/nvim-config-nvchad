@@ -14,26 +14,19 @@ return {
       --- },
       --- @type vim.diagnostic.Opts
       diagnostics = {
+        --- @type vim.diagnostic.Opts.Float
+        float = {
+          border = "rounded",
+        },
         underline = true,
-        update_in_insert = false,
-        -- virtual_text = false,
         virtual_text = {
           spacing = 4,
-          source = "if_many",
-          -- prefix = "●",
+          -- source = "if_many",
           -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
           -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
           prefix = "icons",
         },
-        severity_sort = true,
-        signs = {
-          text = {
-            [vim.diagnostic.severity.ERROR] = require("lazyvim.config").icons.diagnostics.Error,
-            [vim.diagnostic.severity.WARN] = require("lazyvim.config").icons.diagnostics.Warn,
-            [vim.diagnostic.severity.HINT] = require("lazyvim.config").icons.diagnostics.Hint,
-            [vim.diagnostic.severity.INFO] = require("lazyvim.config").icons.diagnostics.Info,
-          },
-        },
+        -- severity_sort = true,
       },
       ---@type lspconfig.options
       servers = {

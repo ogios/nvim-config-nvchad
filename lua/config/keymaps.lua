@@ -45,40 +45,23 @@ local M = {
   { "<C-c>", "<cmd> %y+ <CR>", desc = "Copy whole file", mode = "n" },
   { "qw", "viw", desc = "select word in visual mode", mode = "n" },
 
-  -- telescope
-  -- { "<leader>fw", "<cmd> Telescope live_grep <CR>", desc = "Live grep", mode = "n", remap = true, nowait = true },
-  -- { "<leader>md", "<cmd> Telescope commands <CR>", desc = "telescope builtin command", mode = "n" },
-  -- telescope
-
   -- fzf-lua
   { "<leader>fw", "<cmd> FzfLua live_grep <CR>", desc = "Live grep", mode = "n", remap = true, nowait = true },
   { "<leader>md", "<cmd> FzfLua commands <CR>", desc = "Find Command", mode = "n" },
   -- fzf-lua
 
   -- lsp
-  { "<A-CR>", require("actions-preview").code_actions, mode = { "n", "v" }, desc = "Code action menu" },
-  {
-    "<leader>lfm",
-    function()
-      require("lazyvim.util").format({ force = true })
-    end,
-    desc = "LSP formatting",
-    mode = "n",
-  },
   { "<leader>ld", "<CMD>Glance definitions<CR>", desc = "Goto Definition", mode = "n" },
   { "<leader>lr", "<CMD>Glance references<CR>", desc = "Goto References", mode = "n" },
   { "<leader>lY", "<CMD>Glance type_definitions<CR>", desc = "Goto Type Definition", mode = "n" },
   { "<leader>lI", "<CMD>Glance implementations<CR>", desc = "Goto Implementation", mode = "n" },
   { "<leader>lD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
   {
-    "<leader>lf",
-    function()
-      vim.diagnostic.open_float({ border = "rounded" })
-    end,
-    desc = "Float diagnostic",
+    "<leader>lra",
+    "<leader>cr",
+    desc = "IncRename",
     mode = "n",
   },
-  { "<leader>lra", ":IncRename ", desc = "IncRename", mode = "n" },
   -- lsp
 
   -- window size

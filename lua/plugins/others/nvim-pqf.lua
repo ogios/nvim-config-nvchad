@@ -1,6 +1,5 @@
 return {
   "yorickpeterse/nvim-pqf",
-  config = function()
-    require("pqf").setup()
-  end,
+  event = "VeryLazy",
+  config = true,
 }
