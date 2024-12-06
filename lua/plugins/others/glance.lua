@@ -20,7 +20,7 @@ return {
         },
         preview = {
           ["gp"] = actions.enter_win("list"),
-          ["Q"] = actions.close(),
+          ["Q"] = actions.close,
         },
       },
       folds = {
