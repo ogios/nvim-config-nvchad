@@ -145,8 +145,6 @@ return {
         cmp_lsp_rs.filter_out.entry_filter(source)
       end
 
-      require("lazyvim.util").info("cmp_lsp_rs: " .. vim.inspect(opts.sorting.comparators))
-
       return opts
     end,
   },
