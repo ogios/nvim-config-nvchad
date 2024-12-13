@@ -46,8 +46,8 @@ local M = {
   { "qw", "viw", desc = "select word in visual mode", mode = "n" },
 
   -- fzf-lua
-  { "<leader>fw", "<cmd> FzfLua live_grep <CR>", desc = "Live grep", mode = "n", remap = true, nowait = true },
-  { "<leader>md", "<cmd> FzfLua commands <CR>", desc = "Find Command", mode = "n" },
+  { "<leader>fw", LazyVim.pick("live_grep"), desc = "Live grep", mode = "n", remap = true, nowait = true },
+  { "<leader>md", LazyVim.pick("commands"), desc = "Find Command", mode = "n" },
   -- fzf-lua
 
   -- lsp
