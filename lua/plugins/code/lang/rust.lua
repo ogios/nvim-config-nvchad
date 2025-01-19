@@ -5,9 +5,17 @@ return {
       require("neoconf.plugins").register({
         name = "rust",
         on_schema = function(schema)
-          schema:import("rust", { features = {} })
+          schema:import("rust", { features = {}, no_default_feature = false, cfgs = {} })
           schema:set("rust.features", {
             description = "Specify features to enable, leave empty to enable all",
+            type = "string",
+          })
+          schema:set("rust.no_default_feature", {
+            description = "no default feature, default false",
+            type = "boolean",
+          })
+          schema:set("rust.cfgs", {
+            description = "Specify cfgs to enable, leave empty to do nothing",
             type = "string",
           })
         end,
@@ -58,19 +66,48 @@ return {
           return
         end
 
-        LazyVim.info("rust features: " .. vim.inspect(specify_features))
         local cargo = opts.server.default_settings["rust-analyzer"].cargo or {}
-        -- local check = opts.server.default_settings["rust-analyzer"].check or {}
-        cargo.allFeatures = false
         cargo.features = specify_features
-        -- check.features = specify_features
         opts.server.default_settings["rust-analyzer"].cargo = cargo
-        -- opts.server.default_settings["rust-analyzer"].check = check
-
-        require("lazyvim.util").info("rust features: " .. vim.inspect(opts.server.default_settings["rust-analyzer"]))
       end
 
+      local function setup_no_default_target()
+        local no_default_feature = require("neoconf").get("rust.no_default_feature", nil)
+        if no_default_feature == nil then
+          return
+        end
+        if no_default_feature ~= true then
+          return
+        end
+        local cargo = opts.server.default_settings["rust-analyzer"].cargo or {}
+        cargo.noDefaultFeatures = true
+        opts.server.default_settings["rust-analyzer"].cargo = cargo
+      end
+
+      local setup_cfgs = function()
+        local cfgs = require("neoconf").get("rust.cfgs", nil)
+        if cfgs == nil then
+          return
+        end
+        if vim.islist(cfgs) == false then
+          require("lazyvim.util").warn("rust.cfgs provided in neoconf, but it's not a list, ignored")
+          return
+        end
+        if vim.tbl_count(cfgs) == 0 then
+          return
+        end
+
+        local cargo = opts.server.default_settings["rust-analyzer"].cargo or {}
+        cargo.cfgs = cargo.cfgs or {}
+        vim.list_extend(cargo.cfgs, cfgs)
+        opts.server.default_settings["rust-analyzer"].cargo = cargo
+      end
+
+      setup_cfgs()
+      setup_no_default_target()
       setup_feature()
+
+      LazyVim.info(vim.inspect(opts.server.default_settings["rust-analyzer"].cargo))
     end,
   },
 }
