@@ -33,6 +33,7 @@ return {
         "vim",
         "yaml",
         "hyprlang",
+        "kdl",
 
         -- other
         "tsx",
