@@ -12,12 +12,10 @@ return {
       keymap = {
         ["<Tab>"] = {
           "select_next",
-          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
           "fallback",
         },
         ["<S-Tab>"] = {
           "select_prev",
-          LazyVim.cmp.map({ "snippet_backward", "ai_accept" }),
           "fallback",
         },
       },
